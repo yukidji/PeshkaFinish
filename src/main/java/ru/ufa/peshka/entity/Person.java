@@ -17,8 +17,6 @@ public abstract class Person {
      */
     private String patronymic;
 
-
-
     public String getFirstName() {
         return firstName;
     }

@@ -3,7 +3,7 @@ package ru.ufa.peshka.entity;
 /**
  * штрафы участника, полученные за этап на дистанции
  */
-public abstract class Fine {
+public abstract class Fine extends AbstractID {
     /**
      * номер этапа
      */
@@ -19,7 +19,6 @@ public abstract class Fine {
      */
     private boolean cut;
     //********************************************
-
 
     public int getNumberStage() {
         return numberStage;

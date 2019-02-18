@@ -47,36 +47,6 @@ public class Participant extends Person {
         this.id = id;
     }
 
-    @Override
-    public String getFirstName() {
-        return super.getFirstName();
-    }
-
-    @Override
-    public void setFirstName(String firstName) {
-        super.setFirstName(firstName);
-    }
-
-    @Override
-    public String getLastName() {
-        return super.getLastName();
-    }
-
-    @Override
-    public void setLastName(String lastName) {
-        super.setLastName(lastName);
-    }
-
-    @Override
-    public String getPatronymic() {
-        return super.getPatronymic();
-    }
-
-    @Override
-    public void setPatronymic(String patronymic) {
-        super.setPatronymic(patronymic);
-    }
-
     public int getAge() {
         return age;
     }
@@ -149,21 +119,4 @@ public class Participant extends Person {
                 ", raceGroupId=" + raceGroupId +
                 '}';
     }
-}
-
-enum Gender{
-    man,
-    woman
-}
-
-enum Rank{
-    first,
-    second,
-    third,
-    firstJunior,
-    secondJunior,
-    thirdJunior,
-    br, // без разряда
-    kms,
-    ms
 }

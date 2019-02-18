@@ -82,35 +82,6 @@ public class Delegation extends Person {
         this.arriveDate = arriveDate;
     }
 
-    @Override
-    public String getFirstName() {
-        return super.getFirstName();
-    }
-
-    @Override
-    public void setFirstName(String firstName) {
-        super.setFirstName(firstName);
-    }
-
-    @Override
-    public String getLastName() {
-        return super.getLastName();
-    }
-
-    @Override
-    public void setLastName(String lastName) {
-        super.setLastName(lastName);
-    }
-
-    @Override
-    public String getPatronymic() {
-        return super.getPatronymic();
-    }
-
-    @Override
-    public void setPatronymic(String patronymic) {
-        super.setPatronymic(patronymic);
-    }
 
     @Override
     public String toString() {

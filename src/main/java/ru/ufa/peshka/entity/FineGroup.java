@@ -4,22 +4,17 @@ package ru.ufa.peshka.entity;
  * штрафы группы (стартуют 4 человека)
  */
 public class FineGroup extends Fine {
+
     /**
-     * идентификационный номер штрафа
-     */
-    private int id;
-    /**
-     * идентификационный номер забега группы
+     * идентификационный номер забега группы (как его можно унаследовать
+     * от RaceGroup или сделать наследование в другую сторону? или этого делать вообще не надо)
+     * но наследвать в другу сторону думаю бесмысленно так как тот класс это забег какойто
+     * группы и за этот один забег они могут получить несколько штрафов, т.е
+     * будет созданно несколько экземплров классов FineGroup с разными id но они будут
+     * относится к одному забегу т.е. поле raceGroupId будет у нескольких экзмепляров
+     * этого класса одинаковые, но номера этапов разные соответственно.
      */
     private int raceGroupId;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int idFineG) {
-        this.id = idFineG;
-    }
 
     public int getRaceGroupId() {
         return raceGroupId;
@@ -30,39 +25,9 @@ public class FineGroup extends Fine {
     }
 
     @Override
-    public int getNumberStage() {
-        return super.getNumberStage();
-    }
-
-    @Override
-    public void setNumberStage(int numberStage) {
-        super.setNumberStage(numberStage);
-    }
-
-    @Override
-    public int getFine() {
-        return super.getFine();
-    }
-
-    @Override
-    public void setFine(int fine) {
-        super.setFine(fine);
-    }
-
-    @Override
-    public boolean getCut() {
-        return super.getCut();
-    }
-
-    @Override
-    public void setCut(boolean cut) {
-        super.setCut(cut);
-    }
-
-    @Override
     public String toString() {
         return "FineGroup{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", raceGroupId =" + raceGroupId +
                 ", numberStage=" + getNumberStage()+
                 ", fine=" + getFine()+

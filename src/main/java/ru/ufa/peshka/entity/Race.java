@@ -2,11 +2,11 @@ package ru.ufa.peshka.entity;
 /**
  * абстрактный класс - забег участников
  */
-public abstract class Race {
+public abstract class Race extends AbstractID {
     /**
      * класс дистанции (1, 2, 3, 4, 5 класс). стоит ли из этого делать enum?
      */
-    private classDistance classDistance;
+    private ClassDistance classDistance;
     /**
      * время старта
      */
@@ -16,13 +16,14 @@ public abstract class Race {
      */
     private String timeFinish;
 
+
     //***************************************************
 
-    public classDistance getClassDistance() {
+    public ClassDistance getClassDistance() {
         return classDistance;
     }
 
-    public void setClassDistance(classDistance classDistance) {
+    public void setClassDistance(ClassDistance classDistance) {
         this.classDistance = classDistance;
     }
 
@@ -43,11 +44,3 @@ public abstract class Race {
     }
 
 }
-
-enum classDistance {
-    firstClass,
-    secondClass,
-    thirdClass,
-    fourthClass,
-    fifthClass
-        }
