@@ -16,7 +16,6 @@ public abstract class Race extends AbstractID {
      */
     private String timeFinish;
 
-
     //***************************************************
 
     public ClassDistance getClassDistance() {
