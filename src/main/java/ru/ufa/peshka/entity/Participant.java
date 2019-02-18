@@ -1,24 +1,13 @@
-package ru.bikb.model;
+package ru.ufa.peshka.entity;
 /**
  * участники соревнований
  */
-public class Participant {
+public class Participant extends Person {
     /**
      * идентификационный номер участника
      */
-    private int idParticipant;
-    /**
-     * имя участника
-     */
-    private String firstName;
-    /**
-     * фамилия участника
-     */
-    private String lastName;
-    /**
-     * отчество участника
-     */
-    private String patronymic;
+    private int id;
+
     /**
      * год рождения участника (1997, 2000 ...)
      */
@@ -42,44 +31,50 @@ public class Participant {
     /**
      * идентификационный номер связки участника (забег пары)
      */
-    private int raceSVid;
+    private int raceTwainId;
     /**
      * идентификационный номер группы участника (забег группы)
      */
-    private int raceGid;
+    private int raceGroupId;
 
     //**********************************************************
 
-    public int getIdParticipant() {
-        return idParticipant;
+    public int getId() {
+        return id;
     }
 
-    public void setIdParticipant(int idParticipant) {
-        this.idParticipant = idParticipant;
+    public void setId(int id) {
+        this.id = id;
     }
 
+    @Override
     public String getFirstName() {
-        return firstName;
+        return super.getFirstName();
     }
 
+    @Override
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        super.setFirstName(firstName);
     }
 
+    @Override
     public String getLastName() {
-        return lastName;
+        return super.getLastName();
     }
 
+    @Override
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        super.setLastName(lastName);
     }
 
+    @Override
     public String getPatronymic() {
-        return patronymic;
+        return super.getPatronymic();
     }
 
+    @Override
     public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
+        super.setPatronymic(patronymic);
     }
 
     public int getAge() {
@@ -122,36 +117,36 @@ public class Participant {
         this.chipId = chipId;
     }
 
-    public int getRaceSVid() {
-        return raceSVid;
+    public int getRaceTwainId() {
+        return raceTwainId;
     }
 
-    public void setRaceSVid(int raceSVid) {
-        this.raceSVid = raceSVid;
+    public void setRaceTwainId(int raceTwainId) {
+        this.raceTwainId = raceTwainId;
     }
 
-    public int getRaceGid() {
-        return raceGid;
+    public int getRaceGroupId() {
+        return raceGroupId;
     }
 
-    public void setRaceGid(int raceGid) {
-        this.raceGid = raceGid;
+    public void setRaceGroupId(int raceGroupId) {
+        this.raceGroupId = raceGroupId;
     }
 
     @Override
     public String toString() {
         return "Participant{" +
-                "idParticipant=" + idParticipant +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", patronymic='" + patronymic + '\'' +
+                "id=" + id +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                ", patronymic='" + getLastName() + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", rank='" + rank + '\'' +
                 ", deligationId=" + deligationId +
                 ", chipId=" + chipId +
-                ", raceSVid=" + raceSVid +
-                ", raceGid=" + raceGid +
+                ", raceTwainId=" + raceTwainId +
+                ", raceGroupId=" + raceGroupId +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package ru.bikb.model;
+package ru.ufa.peshka.entity;
 /**
  * чип участника для регистрации времени на старте и финише
  */
@@ -6,38 +6,34 @@ public class Chip {
     /**
      * идентификационный номер чипа
      */
-    private int idChip;
+    private int id;
     /**
      * статус чипа (свободен, не свободен) определяет занят чип кем-то или нет
      */
-    private Statys statys;
+    private boolean status;
 
-    public int getIdChip() {
-        return idChip;
+    public int getId() {
+        return id;
     }
 
-    public void setIdChip(int idChip) {
-        this.idChip = idChip;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Statys getStatys() {
-        return statys;
+    public boolean getStatus() {
+        return status;
     }
 
-    public void setStatys(Statys statys) {
-        this.statys = statys;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
         return "Chip{" +
-                "idChip=" + idChip +
-                ", statys='" + statys + '\'' +
+                "id=" + id +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
 
-enum Statys {
-    free,
-    notFree
-}

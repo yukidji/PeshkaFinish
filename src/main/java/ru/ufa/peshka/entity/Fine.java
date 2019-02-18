@@ -1,4 +1,4 @@
-package ru.bikb.model;
+package ru.ufa.peshka.entity;
 
 /**
  * штрафы участника, полученные за этап на дистанции
@@ -13,11 +13,11 @@ public abstract class Fine {
      */
     private int fine;
     /**
-     * снятие с этапа (да/нет; снят/не снят с этапа
-     * true - не снят с этапа
-     * false - снят с этапа)
+     * снятие с этапа
+     * true - участник не снят с этапа
+     * false - участник снят с этапа
      */
-    private boolean sn;
+    private boolean cut;
     //********************************************
 
 
@@ -37,20 +37,12 @@ public abstract class Fine {
         this.fine = fine;
     }
 
-    public boolean isSn() {
-        return sn;
+    public boolean getCut() {
+        return cut;
     }
 
-    public void setSn(boolean sn) {
-        this.sn = sn;
+    public void setCut(boolean cut) {
+        this.cut = cut;
     }
 
-    @Override
-    public String toString() {
-        return "Fine{" +
-                "numberStage=" + numberStage +
-                ", fine=" + fine +
-                ", sn=" + sn +
-                '}';
-    }
 }

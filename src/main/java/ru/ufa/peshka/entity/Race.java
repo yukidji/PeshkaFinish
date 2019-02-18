@@ -1,12 +1,12 @@
-package ru.bikb.model;
+package ru.ufa.peshka.entity;
 /**
  * абстрактный класс - забег участников
  */
 public abstract class Race {
     /**
-     * класс дистанции
+     * класс дистанции (1, 2, 3, 4, 5 класс). стоит ли из этого делать enum?
      */
-    private int classDistance;
+    private classDistance classDistance;
     /**
      * время старта
      */
@@ -15,18 +15,14 @@ public abstract class Race {
      * время финиша
      */
     private String timeFinish;
-    /**
-     * время на дистанции
-     */
-    private String time;
 
     //***************************************************
 
-    public int getClassDistance() {
+    public classDistance getClassDistance() {
         return classDistance;
     }
 
-    public void setClassDistance(int classDistance) {
+    public void setClassDistance(classDistance classDistance) {
         this.classDistance = classDistance;
     }
 
@@ -46,21 +42,12 @@ public abstract class Race {
         this.timeFinish = timeFinish;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    @Override
-    public String toString() {
-        return "Race{" +
-                "classDistance=" + classDistance +
-                ", timeStart='" + timeStart + '\'' +
-                ", timeFinish='" + timeFinish + '\'' +
-                ", time='" + time + '\'' +
-                '}';
-    }
 }
+
+enum classDistance {
+    firstClass,
+    secondClass,
+    thirdClass,
+    fourthClass,
+    fifthClass
+        }
