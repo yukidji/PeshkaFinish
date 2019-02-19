@@ -3,7 +3,7 @@ package ru.ufa.peshka.entity;
 /**
  * фио человека
  */
-public abstract class Person {
+public abstract class Person extends AbstractID {
     /**
      * имя человека
      */
@@ -13,7 +13,7 @@ public abstract class Person {
      */
     private  String lastName;
     /**
-     * отчетсво человека
+     * отчество человека
      */
     private String patronymic;
 

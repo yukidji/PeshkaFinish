@@ -1,23 +1,24 @@
 package ru.ufa.peshka.entity;
+
+import java.util.UUID;
+
 /**
  * личка. участник стартует один
  */
 public class RaceSingle extends Race{
 
     /**
-     * идентификационный номер участника, нужно ли его наследовать от
-     * класса Participant (участник)?
+     * идентификационный номер участника
      */
-    private int idParticipant;
+    private UUID idParticipant;
 
-    public int getIdParticipant() {
+    public UUID getIdParticipant() {
         return idParticipant;
     }
 
-    public void setIdParticipant(int idParticipant) {
+    public void setIdParticipant(UUID idParticipant) {
         this.idParticipant = idParticipant;
     }
-
 
     @Override
     public String toString() {

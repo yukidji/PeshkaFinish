@@ -1,13 +1,11 @@
 package ru.ufa.peshka.entity;
+
+import java.util.UUID;
+
 /**
  * участники соревнований
  */
 public class Participant extends Person {
-    /**
-     * идентификационный номер участника
-     */
-    private int id;
-
     /**
      * год рождения участника (1997, 2000 ...)
      */
@@ -15,37 +13,29 @@ public class Participant extends Person {
     /**
      * пол участника (м, ж)
      */
-    private Gender gender; //сделать колекцию ...
+    private GENDER gender;
     /**
      * разряд участника (1, 2, 3, 1ю, 2ю, 3ю, б/р, кмс, мс)
      */
-    private Rank rank;
+    private RANK rank;
     /**
-     * идентификационный номер делегации участника
+     * идент6а
      */
-    private int deligationId;
+    private UUID deligationId;
     /**
      * идентификационный номер чипа участника
      */
-    private int chipId;
+    private UUID chipId;
     /**
      * идентификационный номер связки участника (забег пары)
      */
-    private int raceTwainId;
+    private UUID raceTwainId;
     /**
      * идентификационный номер группы участника (забег группы)
      */
-    private int raceGroupId;
+    private UUID raceGroupId;
 
     //**********************************************************
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getAge() {
         return age;
@@ -55,58 +45,58 @@ public class Participant extends Person {
         this.age = age;
     }
 
-    public Gender getGender() {
+    public GENDER getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(GENDER gender) {
         this.gender = gender;
     }
 
-    public Rank getRank() {
+    public RANK getRank() {
         return rank;
     }
 
-    public void setRank(Rank rank) {
+    public void setRank(RANK rank) {
         this.rank = rank;
     }
 
-    public int getDeligationId() {
+    public UUID getDeligationId() {
         return deligationId;
     }
 
-    public void setDeligationId(int deligationId) {
+    public void setDeligationId(UUID deligationId) {
         this.deligationId = deligationId;
     }
 
-    public int getChipId() {
+    public UUID getChipId() {
         return chipId;
     }
 
-    public void setChipId(int chipId) {
+    public void setChipId(UUID chipId) {
         this.chipId = chipId;
     }
 
-    public int getRaceTwainId() {
+    public UUID getRaceTwainId() {
         return raceTwainId;
     }
 
-    public void setRaceTwainId(int raceTwainId) {
+    public void setRaceTwainId(UUID raceTwainId) {
         this.raceTwainId = raceTwainId;
     }
 
-    public int getRaceGroupId() {
+    public UUID getRaceGroupId() {
         return raceGroupId;
     }
 
-    public void setRaceGroupId(int raceGroupId) {
+    public void setRaceGroupId(UUID raceGroupId) {
         this.raceGroupId = raceGroupId;
     }
 
     @Override
     public String toString() {
         return "Participant{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", firstName='" + getFirstName() + '\'' +
                 ", lastName='" + getLastName() + '\'' +
                 ", patronymic='" + getLastName() + '\'' +

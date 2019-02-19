@@ -1,26 +1,22 @@
 package ru.ufa.peshka.entity;
 
+import java.util.UUID;
+
 /**
  * штрафы группы (стартуют 4 человека)
  */
 public class FineGroup extends Fine {
 
     /**
-     * идентификационный номер забега группы (как его можно унаследовать
-     * от RaceGroup или сделать наследование в другую сторону? или этого делать вообще не надо)
-     * но наследвать в другу сторону думаю бесмысленно так как тот класс это забег какойто
-     * группы и за этот один забег они могут получить несколько штрафов, т.е
-     * будет созданно несколько экземплров классов FineGroup с разными id но они будут
-     * относится к одному забегу т.е. поле raceGroupId будет у нескольких экзмепляров
-     * этого класса одинаковые, но номера этапов разные соответственно.
+     * идентификационный номер забега группы
      */
-    private int raceGroupId;
+    private UUID raceGroupId;
 
-    public int getRaceGroupId() {
+    public UUID getRaceGroupId() {
         return raceGroupId;
     }
 
-    public void setRaceGroupId(int raceGroupId) {
+    public void setRaceGroupId(UUID raceGroupId) {
         this.raceGroupId = raceGroupId;
     }
 

@@ -4,9 +4,9 @@ package ru.ufa.peshka.entity;
  */
 public abstract class Race extends AbstractID {
     /**
-     * класс дистанции (1, 2, 3, 4, 5 класс). стоит ли из этого делать enum?
+     * класс дистанции
      */
-    private ClassDistance classDistance;
+    private CLASS_DISTANCE classDistance;
     /**
      * время старта
      */
@@ -19,11 +19,11 @@ public abstract class Race extends AbstractID {
 
     //***************************************************
 
-    public ClassDistance getClassDistance() {
+    public CLASS_DISTANCE getClassDistance() {
         return classDistance;
     }
 
-    public void setClassDistance(ClassDistance classDistance) {
+    public void setClassDistance(CLASS_DISTANCE classDistance) {
         this.classDistance = classDistance;
     }
 

@@ -1,4 +1,7 @@
 package ru.ufa.peshka.entity;
+
+import java.util.UUID;
+
 /**
  * штрафы участника (личка. участник стартовал один)
  */
@@ -7,13 +10,13 @@ public class FineSingle extends Fine{
     /**
      * идентификационный номер забега участника
      */
-    private int RaceSingleId;
+    private UUID RaceSingleId;
 
-    public int getRaceSingleId() {
+    public UUID getRaceSingleId() {
         return RaceSingleId;
     }
 
-    public void setRaceSingleId(int RaceSingleId) {
+    public void setRaceSingleId(UUID RaceSingleId) {
         this.RaceSingleId = RaceSingleId;
     }
 

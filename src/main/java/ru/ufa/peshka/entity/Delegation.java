@@ -7,10 +7,6 @@ import java.util.Date;
  */
 public class Delegation extends Person {
     /**
-     * идентификационный номер делегации
-     */
-    private int id;
-    /**
      * название делегации
      */
     private String name;
@@ -33,14 +29,6 @@ public class Delegation extends Person {
     private Date arriveDate;
 
     //***********************************************************
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -86,7 +74,7 @@ public class Delegation extends Person {
     @Override
     public String toString() {
         return "Delegation{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name ='" + name + '\'' +
                 ", place ='" + place + '\'' +
                 ", firstName" + getFirstName() + '\'' +
