@@ -10,21 +10,21 @@ public class FineTwain extends Fine{
     /**
      * идентификационный номер забега связки
      */
-    private UUID RaceTwainId;
+    private UUID raceTwainId;
 
     public UUID getRaceTwainId() {
-        return RaceTwainId;
+        return raceTwainId;
     }
 
     public void setRaceTwainId(UUID RaceTwainId) {
-        this.RaceTwainId = RaceTwainId;
+        this.raceTwainId = RaceTwainId;
     }
 
     @Override
     public String toString() {
         return "FineTwain{" +
                 "id=" + getId() +
-                ", idRaceSV=" + RaceTwainId +
+                ", idRaceSV=" + raceTwainId +
                 ", numberStage=" + getNumberStage()+
                 ", fine=" + getFine()+
                 ", cut=" + getCut()+

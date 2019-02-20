@@ -10,21 +10,21 @@ public class FineSingle extends Fine{
     /**
      * идентификационный номер забега участника
      */
-    private UUID RaceSingleId;
+    private UUID raceSingleId;
 
     public UUID getRaceSingleId() {
-        return RaceSingleId;
+        return raceSingleId;
     }
 
     public void setRaceSingleId(UUID RaceSingleId) {
-        this.RaceSingleId = RaceSingleId;
+        this.raceSingleId = RaceSingleId;
     }
 
     @Override
     public String toString() {
         return "FineSingle{" +
                 "id=" + getId() +
-                ", RaceSingleId =" + RaceSingleId +
+                ", raceSingleId =" + raceSingleId +
                 ", numberStage=" + getNumberStage()+
                 ", fine=" + getFine()+
                 ", cut=" + getCut()+

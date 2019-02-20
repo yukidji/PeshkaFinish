@@ -13,11 +13,11 @@ public class Participant extends Person {
     /**
      * пол участника (м, ж)
      */
-    private GENDER gender;
+    private Gender gender;
     /**
      * разряд участника (1, 2, 3, 1ю, 2ю, 3ю, б/р, кмс, мс)
      */
-    private RANK rank;
+    private Rank rank;
     /**
      * идент6а
      */
@@ -45,19 +45,19 @@ public class Participant extends Person {
         this.age = age;
     }
 
-    public GENDER getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(GENDER gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
-    public RANK getRank() {
+    public Rank getRank() {
         return rank;
     }
 
-    public void setRank(RANK rank) {
+    public void setRank(Rank rank) {
         this.rank = rank;
     }
 

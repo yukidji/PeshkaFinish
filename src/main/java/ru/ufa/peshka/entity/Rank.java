@@ -3,7 +3,7 @@ package ru.ufa.peshka.entity;
 /**
  * разряд участника
  */
-public enum RANK {
+public enum Rank {
     FIRST,
     SECOND,
     THIRD,

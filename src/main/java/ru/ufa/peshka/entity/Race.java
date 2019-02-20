@@ -6,7 +6,7 @@ public abstract class Race extends AbstractID {
     /**
      * класс дистанции
      */
-    private CLASS_DISTANCE classDistance;
+    private ClassDistance classDistance;
     /**
      * время старта
      */
@@ -16,14 +16,13 @@ public abstract class Race extends AbstractID {
      */
     private String timeFinish;
 
-
     //***************************************************
 
-    public CLASS_DISTANCE getClassDistance() {
+    public ClassDistance getClassDistance() {
         return classDistance;
     }
 
-    public void setClassDistance(CLASS_DISTANCE classDistance) {
+    public void setClassDistance(ClassDistance classDistance) {
         this.classDistance = classDistance;
     }
 

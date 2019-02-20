@@ -3,7 +3,7 @@ package ru.ufa.peshka.entity;
 /**
  * класс дистанции
  */
-public enum CLASS_DISTANCE {
+public enum ClassDistance {
     FIRST,
     SECOND,
     THIRD,

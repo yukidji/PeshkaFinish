@@ -1,8 +1,9 @@
 package ru.ufa.peshka.entity;
+
 /**
  * чип участника для регистрации времени на старте и финише
  */
-public class Chip  extends AbstractID{
+public class Chip extends AbstractID {
 
     /**
      * статус чипа (свободен, не свободен) определяет занят чип кем-то или нет
