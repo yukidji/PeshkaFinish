@@ -3,7 +3,7 @@ package ru.ufa.peshka.entity;
 /**
  * пол участника соревнований
  */
-public enum GENDER {
+public enum Gender {
         MAN,
         WOMAN
 }

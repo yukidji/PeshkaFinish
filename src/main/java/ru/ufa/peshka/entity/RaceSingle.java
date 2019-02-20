@@ -10,21 +10,21 @@ public class RaceSingle extends Race{
     /**
      * идентификационный номер участника
      */
-    private UUID idParticipant;
+    private UUID participantId;
 
-    public UUID getIdParticipant() {
-        return idParticipant;
+    public UUID getParticipantId() {
+        return participantId;
     }
 
-    public void setIdParticipant(UUID idParticipant) {
-        this.idParticipant = idParticipant;
+    public void setParticipantId(UUID participantId) {
+        this.participantId = participantId;
     }
 
     @Override
     public String toString() {
         return "RaceSingle{" +
                 "id=" + getId() +
-                ", idParticipant=" + idParticipant +
+                ", participantId=" + participantId +
                 "classDistance=" + getClassDistance() +
                 "timeStart=" + getTimeStart() +
                 "timeFinish=" + getTimeFinish() +

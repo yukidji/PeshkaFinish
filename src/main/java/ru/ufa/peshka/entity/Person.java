@@ -11,7 +11,7 @@ public abstract class Person extends AbstractID {
     /**
      * фамилия человека
      */
-    private  String lastName;
+    private String lastName;
     /**
      * отчество человека
      */
