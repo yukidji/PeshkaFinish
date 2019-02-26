@@ -22,14 +22,12 @@
 DROP TABLE IF EXISTS `chip`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
- 
 CREATE TABLE `chip` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `statys` enum('free','not free') DEFAULT 'free',
+  `id` varchar(36) NOT NULL,
+  `status` enum('free','not free') DEFAULT 'free',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -41,4 +39,4 @@ CREATE TABLE `chip` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 14:45:28
+-- Dump completed on 2019-02-26  9:26:41
