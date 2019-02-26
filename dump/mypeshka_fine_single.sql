@@ -31,7 +31,7 @@ CREATE TABLE `fine_single` (
   `id_race_u` int(11) NOT NULL,
   PRIMARY KEY (`id_fine_u`),
   KEY `fk_fine_u_race_u1_idx` (`id_race_u`),
-  CONSTRAINT `id_race_u` FOREIGN KEY (`id_race_u`) REFERENCES `race_single` (`id_race_u`)
+  CONSTRAINT `id_race_u` FOREIGN KEY (`id_race_u`) REFERENCES `race_single` (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='таблица штрафов';
 
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -30,7 +30,7 @@ CREATE TABLE `race_single` (
   `ID_participant` int(11) NOT NULL,
   PRIMARY KEY (`id_race_u`),
   KEY `fk_race_u_participant1_idx` (`ID_participant`),
-  CONSTRAINT `fk_race_u_participant1` FOREIGN KEY (`ID_participant`) REFERENCES `participant` (`ID_participant`)
+  CONSTRAINT `fk_race_u_participant1` FOREIGN KEY (`ID_participant`) REFERENCES `participant` (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='таблица со всеми стартами участников, здесь опысивается кто какой класс бежит, так как один участник может бедать в нескольких забегах';
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

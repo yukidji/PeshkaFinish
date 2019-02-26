@@ -30,7 +30,7 @@ CREATE TABLE `fine_group` (
   `id_race_g` int(11) NOT NULL,
   PRIMARY KEY (`id_fine_g`),
   KEY `fk_fine_g_race_g1_idx` (`id_race_g`),
-  CONSTRAINT `fk_fine_g_race_g1` FOREIGN KEY (`id_race_g`) REFERENCES `race_group` (`id_race_g`)
+  CONSTRAINT `fk_fine_g_race_g1` FOREIGN KEY (`id_race_g`) REFERENCES `race_group` (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

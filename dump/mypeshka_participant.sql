@@ -39,10 +39,10 @@ CREATE TABLE `participant` (
   KEY `fk_participant_chip1_idx` (`chip_id`),
   KEY `fk_participant_race_sv1_idx` (`race_sv_id`),
   KEY `fk_participant_race_g1_idx` (`race_g_id`),
-  CONSTRAINT `fk_participant_chip1` FOREIGN KEY (`chip_id`) REFERENCES `chip` (`id`),
-  CONSTRAINT `fk_participant_race_g1` FOREIGN KEY (`race_g_id`) REFERENCES `race_group` (`id_race_g`),
-  CONSTRAINT `fk_participant_race_sv1` FOREIGN KEY (`race_sv_id`) REFERENCES `race_twain` (`id_race_SV`),
-  CONSTRAINT `id delegation` FOREIGN KEY (`delegation_id`) REFERENCES `delegation` (`ID_delegation`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_participant_chip1` FOREIGN KEY (`chip_id`) REFERENCES Chip (`id`),
+  CONSTRAINT `fk_participant_race_g1` FOREIGN KEY (`race_g_id`) REFERENCES `race_group` (id),
+  CONSTRAINT `fk_participant_race_sv1` FOREIGN KEY (`race_sv_id`) REFERENCES `race_twain` (id),
+  CONSTRAINT `id delegation` FOREIGN KEY (`delegation_id`) REFERENCES `delegation` (id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

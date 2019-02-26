@@ -1,5 +1,6 @@
 package ru.ufa.peshka.entity;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -9,7 +10,7 @@ public class Participant extends Person {
     /**
      * год рождения участника (1997, 2000 ...)
      */
-    private int age;
+    private Date age;
     /**
      * пол участника (м, ж)
      */
@@ -21,7 +22,7 @@ public class Participant extends Person {
     /**
      * идент6а
      */
-    private UUID deligationId;
+    private UUID delegationId;
     /**
      * идентификационный номер чипа участника
      */
@@ -37,11 +38,11 @@ public class Participant extends Person {
 
     //**********************************************************
 
-    public int getAge() {
+    public Date getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Date age) {
         this.age = age;
     }
 
@@ -61,12 +62,12 @@ public class Participant extends Person {
         this.rank = rank;
     }
 
-    public UUID getDeligationId() {
-        return deligationId;
+    public UUID getDelegationId() {
+        return delegationId;
     }
 
-    public void setDeligationId(UUID deligationId) {
-        this.deligationId = deligationId;
+    public void setDelegationId(UUID delegationId) {
+        this.delegationId = delegationId;
     }
 
     public UUID getChipId() {
@@ -103,7 +104,7 @@ public class Participant extends Person {
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 ", rank='" + rank + '\'' +
-                ", deligationId=" + deligationId +
+                ", delegationId=" + delegationId +
                 ", chipId=" + chipId +
                 ", raceTwainId=" + raceTwainId +
                 ", raceGroupId=" + raceGroupId +

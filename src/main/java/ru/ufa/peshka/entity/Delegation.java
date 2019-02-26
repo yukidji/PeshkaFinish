@@ -67,6 +67,7 @@ public class Delegation extends Person {
     }
 
     public void setArriveDate(Date arriveDate) {
+
         this.arriveDate = arriveDate;
     }
 
@@ -74,15 +75,15 @@ public class Delegation extends Person {
     @Override
     public String toString() {
         return "Delegation{" +
-                "id=" + getId() +
+                "id = " + getId() +
                 ", name ='" + name + '\'' +
                 ", place ='" + place + '\'' +
-                ", firstName" + getFirstName() + '\'' +
-                ", lastName" + getLastName() + '\'' +
-                ", patronymic" + getPatronymic() + '\'' +
-                ", phoneCaptain='" + phoneCaptain + '\'' +
-                ", sumParticipant=" + sumParticipant +
-                ", arriveDate='" + arriveDate + '\'' +
+                ", firstName ='" + getFirstName() + '\'' +
+                ", lastName ='" + getLastName() + '\'' +
+                ", patronymic ='" + getPatronymic() + '\'' +
+                ", phoneCaptain ='" + phoneCaptain + '\'' +
+                ", sumParticipant ='" + sumParticipant +
+                ", arriveDate ='" + arriveDate + '\'' +
                 '}';
     }
 }

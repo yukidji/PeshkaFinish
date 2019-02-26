@@ -30,7 +30,7 @@ CREATE TABLE `fine_twain` (
   `id_race_sv` int(11) NOT NULL,
   PRIMARY KEY (`id_fine_sv`),
   KEY `fk_fine_sv_race_sv1_idx` (`id_race_sv`),
-  CONSTRAINT `fk_fine_sv_race_sv1` FOREIGN KEY (`id_race_sv`) REFERENCES `race_twain` (`id_race_SV`)
+  CONSTRAINT `fk_fine_sv_race_sv1` FOREIGN KEY (`id_race_sv`) REFERENCES `race_twain` (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
