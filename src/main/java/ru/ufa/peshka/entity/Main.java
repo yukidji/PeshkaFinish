@@ -11,7 +11,8 @@ public class Main {
     public static void main (String[] args) throws SQLException, ClassNotFoundException, ParseException {
         ConnectionDB connectionDB = new ConnectionDB();
         DelegationDao delegationDao = new DelegationDao(connectionDB.getConnection());
-        delegationDao.create();
+        Delegation delegation = new Delegation();
+        delegationDao.delete(delegation);
 
     }
 }

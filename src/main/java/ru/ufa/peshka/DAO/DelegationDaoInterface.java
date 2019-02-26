@@ -16,13 +16,13 @@ public interface DelegationDaoInterface {
     Delegation create() throws SQLException, ParseException;
 
     //read
-    Delegation readById (UUID id) throws SQLException;
+    Delegation readById (String id) throws SQLException;
 
     //update
-    void update(Delegation delegation);
+    void update(Delegation delegation) throws SQLException;
 
     //delete
-    void delete (Delegation delegation);
+    void delete (Delegation delegation) throws SQLException;
 
     //get All
     List<Delegation> getAll() throws SQLException;

@@ -4,10 +4,8 @@ import ru.ufa.peshka.entity.Delegation;
 
 import java.sql.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.UUID;
 
 public class DelegationDao implements DelegationDaoInterface{
@@ -46,32 +44,29 @@ public DelegationDao (Connection connection){
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (preparedStatement != null){
-                preparedStatement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
+            if (preparedStatement != null)preparedStatement.close();
+            if (connection != null) connection.close();
         }
-        return null;
+
+        return delegation;
     }
 
     //read переделать. Пока не знаю как
     @Override
-    public Delegation readById(UUID id) throws SQLException{
+    public Delegation readById(String id) throws SQLException{
         PreparedStatement preparedStatement = null;
         Delegation delegation = new Delegation();
 
-        String idString = id.toString();
+        //String idString = id.toString();
         String sql = "SELECT * FROM delegation WHERE id = ?;";
 
         preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, idString);
+        preparedStatement.setString(1, id);
 
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();
 
-        delegation.setId(id);
+        //delegation.setId(id); //???
         delegation.setName(resultSet.getString("name"));
         delegation.setPlace(resultSet.getString("place"));
         delegation.setFirstName(resultSet.getString("first_name_cap"));
@@ -85,21 +80,61 @@ public DelegationDao (Connection connection){
     }
 
     @Override
-    public void update(Delegation delegation) {
+    public void update(Delegation delegation) throws SQLException {
+        PreparedStatement preparedStatement = null;
 
+        String sql = "UPDATE delegation SET name = ?, place = ?, first_name_cap = ?, last_name_cap = ?, patronymic_cap = ?, phone_captain = ?, sum_participant = ?, arrive_date = ? WHERE id = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setString(1, delegation.getName());
+            preparedStatement.setString(2, delegation.getPlace());
+            preparedStatement.setString(3, delegation.getFirstName());
+            preparedStatement.setString(4, delegation.getLastName());
+            preparedStatement.setString(5, delegation.getPatronymic());
+            preparedStatement.setString(6, delegation.getPhoneCaptain());
+            preparedStatement.setInt(7, delegation.getSumParticipant());
+            if(delegation.getArriveDate() == null){
+                preparedStatement.setDate(8,null);
+            } else {
+                preparedStatement.setDate(8, new java.sql.Date(delegation.getArriveDate().getTime()));
+            }
+            preparedStatement.setString(9, delegation.getId().toString());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection !=null) connection.close();
+        }
     }
 
     @Override
-    public void delete(Delegation delegation) {
+    public void delete(Delegation delegation) throws SQLException {
+        PreparedStatement preparedStatement = null;
 
+        String sql = "DELETE FROM delegation WHERE id = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,delegation.getId().toString());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) preparedStatement.close();
+            if (connection != null) connection.close();
+        }
     }
 
     @Override
     public List<Delegation> getAll() throws SQLException {
         List<Delegation> delegations = new ArrayList<>();
         Statement statement = null;
-        ResultSet resultSet = null;
-        Delegation delegation = new Delegation();
+        ResultSet resultSet;
 
         String sql = "SELECT * FROM delegation";
 
@@ -108,6 +143,8 @@ public DelegationDao (Connection connection){
             resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()){
+                Delegation delegation = new Delegation();
+
                 //delegation.setId(); //не знаю как состыковать string и UUID (id d БД хранится как строка)
                 delegation.setName(resultSet.getString(2));
                 delegation.setPlace(resultSet.getString(3));
@@ -116,17 +153,15 @@ public DelegationDao (Connection connection){
                 delegation.setPatronymic(resultSet.getString(6));
                 delegation.setPhoneCaptain(resultSet.getString(7));
                 delegation.setSumParticipant(resultSet.getInt(8));
-                //delegation.getArriveDate(new java.util.Date(resultSet.getDate(9).getTime()));
+                delegation.setArriveDate(resultSet.getDate(9));
+
+                delegations.add(delegation);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            if (statement != null){
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
+            if (statement != null) statement.close();
+            if (connection != null) connection.close();
         }
         return delegations;
     }
