@@ -1,6 +1,8 @@
 package ru.ufa.peshka.entity;
 
-import java.util.Date;
+import ru.ufa.peshka.entity.Enum.Gender;
+import ru.ufa.peshka.entity.Enum.Rank;
+
 import java.util.UUID;
 
 /**
@@ -10,7 +12,7 @@ public class Participant extends Person {
     /**
      * год рождения участника (1997, 2000 ...)
      */
-    private Date age;
+    private int age;
     /**
      * пол участника (м, ж)
      */
@@ -20,7 +22,7 @@ public class Participant extends Person {
      */
     private Rank rank;
     /**
-     * идент6а
+     * идентификационный номер делегации участника
      */
     private UUID delegationId;
     /**
@@ -38,11 +40,11 @@ public class Participant extends Person {
 
     //**********************************************************
 
-    public Date getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Date age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -92,22 +94,5 @@ public class Participant extends Person {
 
     public void setRaceGroupId(UUID raceGroupId) {
         this.raceGroupId = raceGroupId;
-    }
-
-    @Override
-    public String toString() {
-        return "Participant{" +
-                "id=" + getId() +
-                ", firstName='" + getFirstName() + '\'' +
-                ", lastName='" + getLastName() + '\'' +
-                ", patronymic='" + getLastName() + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", rank='" + rank + '\'' +
-                ", delegationId=" + delegationId +
-                ", chipId=" + chipId +
-                ", raceTwainId=" + raceTwainId +
-                ", raceGroupId=" + raceGroupId +
-                '}';
     }
 }

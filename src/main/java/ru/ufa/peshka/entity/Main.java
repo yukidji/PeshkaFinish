@@ -12,7 +12,10 @@ public class Main {
         ConnectionDB connectionDB = new ConnectionDB();
         DelegationDao delegationDao = new DelegationDao(connectionDB.getConnection());
         Delegation delegation = new Delegation();
-        delegationDao.delete(delegation);
+        delegation.toString();
+        Chip chip = new Chip();
+        chip.toString();
+
 
     }
 }

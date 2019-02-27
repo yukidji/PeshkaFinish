@@ -19,15 +19,4 @@ public class FineTwain extends Fine{
     public void setRaceTwainId(UUID RaceTwainId) {
         this.raceTwainId = RaceTwainId;
     }
-
-    @Override
-    public String toString() {
-        return "FineTwain{" +
-                "id=" + getId() +
-                ", idRaceSV=" + raceTwainId +
-                ", numberStage=" + getNumberStage()+
-                ", fine=" + getFine()+
-                ", cut=" + getCut()+
-                '}';
-    }
 }

@@ -1,4 +1,4 @@
-package ru.ufa.peshka.entity;
+package ru.ufa.peshka.entity.Enum;
 
 /**
  * разряд участника

@@ -19,15 +19,4 @@ public class RaceSingle extends Race{
     public void setParticipantId(UUID participantId) {
         this.participantId = participantId;
     }
-
-    @Override
-    public String toString() {
-        return "RaceSingle{" +
-                "id=" + getId() +
-                ", participantId=" + participantId +
-                "classDistance=" + getClassDistance() +
-                "timeStart=" + getTimeStart() +
-                "timeFinish=" + getTimeFinish() +
-                '}';
-    }
 }

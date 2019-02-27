@@ -2,10 +2,10 @@ package ru.ufa.peshka.DAO;
 
 import ru.ufa.peshka.entity.Delegation;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.List;
-import java.util.UUID;
+import java.util.HashSet;
 
 /**
  * интерфейс для работы с таблицей delegation (делегация)
@@ -13,7 +13,7 @@ import java.util.UUID;
 public interface DelegationDaoInterface {
 
     //create создание новой записи в БД
-    Delegation create() throws SQLException, ParseException;
+    void create(Delegation delegation) throws SQLException, ParseException;
 
     //read
     Delegation readById (String id) throws SQLException;
@@ -25,5 +25,7 @@ public interface DelegationDaoInterface {
     void delete (Delegation delegation) throws SQLException;
 
     //get All
-    List<Delegation> getAll() throws SQLException;
+    HashSet<Delegation> getAll() throws SQLException;
+
+    void CloseConnection () throws SQLException;
 }

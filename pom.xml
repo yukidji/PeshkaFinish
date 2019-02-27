@@ -7,14 +7,23 @@
     <groupId>ru/bikb/PeshkaFinish</groupId>
     <artifactId>PeshkaFinish</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <source.plugin>7</source.plugin>
+        <target.plugin>7</target.plugin>
+        <version.commonsLang>2.6</version.commonsLang>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>7</source>
-                    <target>7</target>
+                    <source>${source.plugin}</source>
+                    <target>${target.plugin}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -25,6 +34,12 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.46</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${version.commonsLang}</version>
         </dependency>
     </dependencies>
 

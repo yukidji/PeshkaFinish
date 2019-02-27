@@ -2,30 +2,36 @@ package ru.ufa.peshka.DAO;
 
 import ru.ufa.peshka.entity.Delegation;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.HashSet;
 
 public class DelegationDao implements DelegationDaoInterface{
 private Connection connection;
 
-public DelegationDao (Connection connection){
-    this.connection = connection;
-}
+    public DelegationDao (Connection connection){
+        this.connection = connection;
+    }
+
+    @Override
+    public void CloseConnection() throws SQLException {
+        if (connection != null) {
+            connection.close();
+        }
+    }
 
     //create создание новой записи в БД
     @Override
-    public Delegation create() throws SQLException, ParseException {
-        PreparedStatement preparedStatement = null;
-        Delegation delegation = new Delegation();
+    public void create(Delegation delegation) throws SQLException, ParseException {
 
         String sql = "INSERT INTO delegation(id, name, place, first_name_cap, last_name_cap, patronymic_cap, phone_captain, sum_participant, arrive_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try{
-            preparedStatement = connection.prepareStatement(sql);
-
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, delegation.getId().toString());
             preparedStatement.setString(2, delegation.getName());
             preparedStatement.setString(3, delegation.getPlace());
@@ -34,60 +40,48 @@ public DelegationDao (Connection connection){
             preparedStatement.setString(6, delegation.getPatronymic());
             preparedStatement.setString(7, delegation.getPhoneCaptain());
             preparedStatement.setInt(8, delegation.getSumParticipant());
-            if(delegation.getArriveDate() == null){
-                preparedStatement.setDate(9,null);
-            } else {
-                preparedStatement.setDate(9, new java.sql.Date(delegation.getArriveDate().getTime()));
-            }
+            preparedStatement.setDate(9,delegation.getArriveDate() == null ? null : new java.sql.Date(delegation.getArriveDate().getTime()));
             preparedStatement.execute();
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            if (preparedStatement != null)preparedStatement.close();
-            if (connection != null) connection.close();
         }
-
-        return delegation;
     }
 
     //read переделать. Пока не знаю как
     @Override
     public Delegation readById(String id) throws SQLException{
-        PreparedStatement preparedStatement = null;
         Delegation delegation = new Delegation();
 
-        //String idString = id.toString();
         String sql = "SELECT * FROM delegation WHERE id = ?;";
 
-        preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, id);
-
-        ResultSet resultSet = preparedStatement.executeQuery();
-        resultSet.next();
-
-        //delegation.setId(id); //???
-        delegation.setName(resultSet.getString("name"));
-        delegation.setPlace(resultSet.getString("place"));
-        delegation.setFirstName(resultSet.getString("first_name_cap"));
-        delegation.setLastName(resultSet.getString("last_name_cap"));
-        delegation.setPatronymic(resultSet.getString("patronymic"));
-        delegation.setPhoneCaptain(resultSet.getString("phone_captain"));
-        delegation.setSumParticipant(resultSet.getInt("sum_participant"));
-        delegation.setArriveDate(resultSet.getDate("arrive_date"));
-
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            //delegation.setId(id); //???
+            delegation.setName(resultSet.getString("name"));
+            delegation.setPlace(resultSet.getString("place"));
+            delegation.setFirstName(resultSet.getString("first_name_cap"));
+            delegation.setLastName(resultSet.getString("last_name_cap"));
+            delegation.setPatronymic(resultSet.getString("patronymic"));
+            delegation.setPhoneCaptain(resultSet.getString("phone_captain"));
+            delegation.setSumParticipant(resultSet.getInt("sum_participant"));
+            delegation.setArriveDate(resultSet.getDate("arrive_date"));
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
         return delegation;
     }
 
     @Override
     public void update(Delegation delegation) throws SQLException {
-        PreparedStatement preparedStatement = null;
 
         String sql = "UPDATE delegation SET name = ?, place = ?, first_name_cap = ?, last_name_cap = ?, patronymic_cap = ?, phone_captain = ?, sum_participant = ?, arrive_date = ? WHERE id = ?";
 
         try {
-            preparedStatement = connection.prepareStatement(sql);
-
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, delegation.getName());
             preparedStatement.setString(2, delegation.getPlace());
             preparedStatement.setString(3, delegation.getFirstName());
@@ -95,57 +89,41 @@ public DelegationDao (Connection connection){
             preparedStatement.setString(5, delegation.getPatronymic());
             preparedStatement.setString(6, delegation.getPhoneCaptain());
             preparedStatement.setInt(7, delegation.getSumParticipant());
-            if(delegation.getArriveDate() == null){
-                preparedStatement.setDate(8,null);
-            } else {
-                preparedStatement.setDate(8, new java.sql.Date(delegation.getArriveDate().getTime()));
-            }
+            preparedStatement.setDate(8,delegation.getArriveDate() == null ? null : new java.sql.Date(delegation.getArriveDate().getTime()));
             preparedStatement.setString(9, delegation.getId().toString());
             preparedStatement.executeUpdate();
-
         } catch (SQLException e) {
             e.printStackTrace();
-
-        } finally {
-            if (preparedStatement != null) preparedStatement.close();
-            if (connection !=null) connection.close();
         }
     }
 
     @Override
     public void delete(Delegation delegation) throws SQLException {
-        PreparedStatement preparedStatement = null;
 
         String sql = "DELETE FROM delegation WHERE id = ?";
 
         try {
-            preparedStatement = connection.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,delegation.getId().toString());
             preparedStatement.executeUpdate();
         } catch (SQLException e){
             e.printStackTrace();
-        } finally {
-            if (preparedStatement != null) preparedStatement.close();
-            if (connection != null) connection.close();
         }
     }
 
     @Override
-    public List<Delegation> getAll() throws SQLException {
-        List<Delegation> delegations = new ArrayList<>();
-        Statement statement = null;
-        ResultSet resultSet;
+    public HashSet<Delegation> getAll() throws SQLException {
+        HashSet<Delegation> delegations = new HashSet<>();
 
         String sql = "SELECT * FROM delegation";
 
         try{
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()){
                 Delegation delegation = new Delegation();
-
-                //delegation.setId(); //не знаю как состыковать string и UUID (id d БД хранится как строка)
+                //delegation.setId();
                 delegation.setName(resultSet.getString(2));
                 delegation.setPlace(resultSet.getString(3));
                 delegation.setFirstName(resultSet.getString(4));
@@ -154,14 +132,10 @@ public DelegationDao (Connection connection){
                 delegation.setPhoneCaptain(resultSet.getString(7));
                 delegation.setSumParticipant(resultSet.getInt(8));
                 delegation.setArriveDate(resultSet.getDate(9));
-
                 delegations.add(delegation);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            if (statement != null) statement.close();
-            if (connection != null) connection.close();
         }
         return delegations;
     }

@@ -1,21 +1,43 @@
 package ru.ufa.peshka.DAO;
 
-import java.sql.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * получение соединения с БД
  */
 public class ConnectionDB {
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3306/";
-    private static final String DB_NAME = "mypeshka?autoReconnect=true&useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "612643032";
+    private static String driver = null;
+    private static String url = null;
+    private static String user = null;
+    private static String password = null;
+
+    private static Properties property = new Properties();
+
+    static {
+        FileInputStream file;
+         try{
+             file = new FileInputStream ("src/main/resources/config.properties");
+             property.load(file);
+
+             driver = property.getProperty("DRIVER");
+             url = property.getProperty("URL");
+             user = property.getProperty("USER");
+             password = property.getProperty("PASSWORD");
+
+         } catch (IOException e) {
+             e.printStackTrace();
+         }
+
+    }
 
     public Connection getConnection () throws SQLException, ClassNotFoundException {
-            Class.forName(DRIVER);
-            //System.out.println("вход в ConnectionDB в getConnection");
-            return DriverManager.getConnection(URL + DB_NAME, USER, PASSWORD);
+            Class.forName(driver);
+            return DriverManager.getConnection(url, user, password);
     }
 
 }

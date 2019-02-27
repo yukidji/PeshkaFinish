@@ -17,13 +17,5 @@ public class Chip extends AbstractID {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
-    @Override
-    public String toString() {
-        return "Chip{" +
-                "id=" + getId() +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }
 
