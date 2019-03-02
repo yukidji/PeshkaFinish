@@ -11,19 +11,23 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <source.plugin>7</source.plugin>
-        <target.plugin>7</target.plugin>
+        <source.pluginMavenCompiler>1.8</source.pluginMavenCompiler>
+        <target.pluginMavenCompiler>1.8</target.pluginMavenCompiler>
+
         <version.commonsLang>2.6</version.commonsLang>
+        <version.mysqlConnerctor>5.1.46</version.mysqlConnerctor>
+        <version.log4j>1.2.17</version.log4j>
     </properties>
 
     <build>
+        <finalName>peshkaFinish</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>${source.plugin}</source>
-                    <target>${target.plugin}</target>
+                    <source>${source.pluginMavenCompiler}</source>
+                    <target>${target.pluginMavenCompiler}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -33,7 +37,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <version>${version.mysqlConnerctor}</version>
         </dependency>
 
         <dependency>
@@ -41,6 +45,13 @@
             <artifactId>commons-lang</artifactId>
             <version>${version.commonsLang}</version>
         </dependency>
+
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${version.log4j}</version>
+        </dependency>
+
     </dependencies>
 
 </project>

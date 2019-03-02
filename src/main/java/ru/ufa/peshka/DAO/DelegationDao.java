@@ -9,25 +9,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.util.HashSet;
+import java.util.Set;
 
-public class DelegationDao implements DelegationDaoInterface{
+public class DelegationDao implements GenericDao<Delegation>{
 private Connection connection;
 
     public DelegationDao (Connection connection){
         this.connection = connection;
     }
 
-    @Override
-    public void CloseConnection() throws SQLException {
-        if (connection != null) {
-            connection.close();
-        }
-    }
-
     //create создание новой записи в БД
     @Override
     public void create(Delegation delegation) throws SQLException, ParseException {
-
         String sql = "INSERT INTO delegation(id, name, place, first_name_cap, last_name_cap, patronymic_cap, phone_captain, sum_participant, arrive_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try{
@@ -112,8 +105,8 @@ private Connection connection;
     }
 
     @Override
-    public HashSet<Delegation> getAll() throws SQLException {
-        HashSet<Delegation> delegations = new HashSet<>();
+    public Set<Delegation> getAll() throws SQLException {
+        Set<Delegation> delegations = new HashSet<>();
 
         String sql = "SELECT * FROM delegation";
 
