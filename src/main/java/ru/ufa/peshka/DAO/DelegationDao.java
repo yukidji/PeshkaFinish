@@ -13,15 +13,16 @@ import java.util.Set;
 
 public class DelegationDao implements GenericDao<Delegation>{
 private Connection connection;
+static String sql;
 
     public DelegationDao (Connection connection){
         this.connection = connection;
     }
 
-    //create создание новой записи в БД
+    //create
     @Override
     public void create(Delegation delegation) throws SQLException, ParseException {
-        String sql = "INSERT INTO delegation(id, name, place, first_name_cap, last_name_cap, patronymic_cap, phone_captain, sum_participant, arrive_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        sql = "INSERT INTO delegation(id, name, place, first_name_cap, last_name_cap, patronymic_cap, phone_captain, sum_participant, arrive_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -35,18 +36,18 @@ private Connection connection;
             preparedStatement.setInt(8, delegation.getSumParticipant());
             preparedStatement.setDate(9,delegation.getArriveDate() == null ? null : new java.sql.Date(delegation.getArriveDate().getTime()));
             preparedStatement.execute();
-
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    //read переделать. Пока не знаю как
+    //read
     @Override
     public Delegation readById(String id) throws SQLException{
         Delegation delegation = new Delegation();
 
-        String sql = "SELECT * FROM delegation WHERE id = ?;";
+        sql = "SELECT * FROM delegation WHERE id = ?;";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -62,6 +63,8 @@ private Connection connection;
             delegation.setPhoneCaptain(resultSet.getString("phone_captain"));
             delegation.setSumParticipant(resultSet.getInt("sum_participant"));
             delegation.setArriveDate(resultSet.getDate("arrive_date"));
+            preparedStatement.close();
+            resultSet.close();
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -71,7 +74,7 @@ private Connection connection;
     @Override
     public void update(Delegation delegation) throws SQLException {
 
-        String sql = "UPDATE delegation SET name = ?, place = ?, first_name_cap = ?, last_name_cap = ?, patronymic_cap = ?, phone_captain = ?, sum_participant = ?, arrive_date = ? WHERE id = ?";
+        sql = "UPDATE delegation SET name = ?, place = ?, first_name_cap = ?, last_name_cap = ?, patronymic_cap = ?, phone_captain = ?, sum_participant = ?, arrive_date = ? WHERE id = ?";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -85,6 +88,7 @@ private Connection connection;
             preparedStatement.setDate(8,delegation.getArriveDate() == null ? null : new java.sql.Date(delegation.getArriveDate().getTime()));
             preparedStatement.setString(9, delegation.getId().toString());
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -93,12 +97,13 @@ private Connection connection;
     @Override
     public void delete(Delegation delegation) throws SQLException {
 
-        String sql = "DELETE FROM delegation WHERE id = ?";
+        sql = "DELETE FROM delegation WHERE id = ?";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,delegation.getId().toString());
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException e){
             e.printStackTrace();
         }
@@ -108,7 +113,7 @@ private Connection connection;
     public Set<Delegation> getAll() throws SQLException {
         Set<Delegation> delegations = new HashSet<>();
 
-        String sql = "SELECT * FROM delegation";
+        sql = "SELECT * FROM delegation";
 
         try{
             Statement statement = connection.createStatement();
@@ -126,6 +131,8 @@ private Connection connection;
                 delegation.setSumParticipant(resultSet.getInt(8));
                 delegation.setArriveDate(resultSet.getDate(9));
                 delegations.add(delegation);
+                statement.close();
+                resultSet.close();
             }
         } catch (SQLException e) {
             e.printStackTrace();
