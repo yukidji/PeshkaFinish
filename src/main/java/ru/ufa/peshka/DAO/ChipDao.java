@@ -1,7 +1,6 @@
 package ru.ufa.peshka.DAO;
 
 import ru.ufa.peshka.entity.Chip;
-import ru.ufa.peshka.entity.Delegation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

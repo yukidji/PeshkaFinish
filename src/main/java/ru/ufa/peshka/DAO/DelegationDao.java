@@ -6,10 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.text.ParseException;
-import java.util.HashSet;
-import java.util.Set;
 
 public class DelegationDao implements GenericDao<Delegation>{
 private Connection connection;
@@ -47,7 +44,7 @@ static String sql;
     public Delegation readById(String id) throws SQLException{
         Delegation delegation = new Delegation();
 
-        sql = "SELECT * FROM delegation WHERE id = ?;";
+        sql = "SELECT * FROM delegation WHERE id = ?";
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -55,14 +52,14 @@ static String sql;
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
             //delegation.setId(id); //???
-            delegation.setName(resultSet.getString("name"));
-            delegation.setPlace(resultSet.getString("place"));
-            delegation.setFirstName(resultSet.getString("first_name_cap"));
-            delegation.setLastName(resultSet.getString("last_name_cap"));
-            delegation.setPatronymic(resultSet.getString("patronymic"));
-            delegation.setPhoneCaptain(resultSet.getString("phone_captain"));
-            delegation.setSumParticipant(resultSet.getInt("sum_participant"));
-            delegation.setArriveDate(resultSet.getDate("arrive_date"));
+            delegation.setName(resultSet.getString(2));
+            delegation.setPlace(resultSet.getString(3));
+            delegation.setFirstName(resultSet.getString(4));
+            delegation.setLastName(resultSet.getString(5));
+            delegation.setPatronymic(resultSet.getString(6));
+            delegation.setPhoneCaptain(resultSet.getString(7));
+            delegation.setSumParticipant(resultSet.getInt(8));
+            delegation.setArriveDate(resultSet.getDate(9));
             preparedStatement.close();
             resultSet.close();
         }catch (SQLException e) {
@@ -109,6 +106,7 @@ static String sql;
         }
     }
 
+    /**
     @Override
     public Set<Delegation> getAll() throws SQLException {
         Set<Delegation> delegations = new HashSet<>();
@@ -139,4 +137,5 @@ static String sql;
         }
         return delegations;
     }
+    */
 }

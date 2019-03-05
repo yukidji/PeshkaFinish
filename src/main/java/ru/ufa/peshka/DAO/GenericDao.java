@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Set;
 
-public interface GenericDao <T>{
+public interface GenericDao <T> {
 
     //create создание новой записи в БД
     void create(T t) throws SQLException, ParseException;
@@ -20,7 +20,11 @@ public interface GenericDao <T>{
     //delete
     void delete (T object) throws SQLException;
 
-    //get All
-    Set<T> getAll() throws SQLException;
+    /**
+     *
+     *  //get All
+     *  Set<T> getAll() throws SQLException;
+     */
+
 
 }
