@@ -1,7 +1,7 @@
 package ru.ufa.peshka.entity;
 
 import ru.ufa.peshka.DAO.UtilsDB;
-import ru.ufa.peshka.DAO.DelegationDao;
+import ru.ufa.peshka.DAO.EntityDao.DelegationDao;
 
 import java.sql.*;
 import java.text.ParseException;

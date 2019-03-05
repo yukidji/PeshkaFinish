@@ -1,5 +1,6 @@
-package ru.ufa.peshka.DAO;
+package ru.ufa.peshka.DAO.EntityDao;
 
+import ru.ufa.peshka.DAO.AbstractDao;
 import ru.ufa.peshka.entity.Enum.Gender;
 import ru.ufa.peshka.entity.Enum.Rank;
 import ru.ufa.peshka.entity.Participant;
@@ -12,24 +13,12 @@ import java.util.UUID;
 
 public class ParticipantDao extends AbstractDao<Participant> {
 
-    String sqlInsert = "INSERT INTO participant (id, first_name, last_name, patronymic, age, gender, rank, id_delegation, id_race_group, id_race_twain, id_chip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    String sqlSelect = "SELECT * FROM participant WHERE id = ?";
-    String sqlUpdate = "UPDATE participant SET first_name = ?, last_name = ?, patronymic = ?, age = ?, gender = ?, rank = ?, id_delegation = ?, id_race_group = ?, id_race_twain = ?, id_chip = ? WHERE id = ?";
-    String sqlDelete = "DELETE FROM participant WHERE id = ?";
-
     public ParticipantDao(Connection connection) {
         super(connection);
-    }
-
-    @Override
-    public String getSQL(String param) {
-        if (param.equals("INSERT")) return sqlInsert;
-        if (param.equals("SELECT")) return sqlSelect;
-        if (param.equals("UPDATE")) return sqlUpdate;
-        if (param.equals("DELETE")) return sqlDelete;
-        else {
-            return null;
-        }
+        super.sqlInsert = "INSERT INTO participant (id, first_name, last_name, patronymic, age, gender, rank, id_delegation, id_race_group, id_race_twain, id_chip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        super.sqlSelect = "SELECT * FROM participant WHERE id = ?";
+        super.sqlUpdate = "UPDATE participant SET first_name = ?, last_name = ?, patronymic = ?, age = ?, gender = ?, rank = ?, id_delegation = ?, id_race_group = ?, id_race_twain = ?, id_chip = ? WHERE id = ?";
+        super.sqlDelete = "DELETE FROM participant WHERE id = ?";
     }
 
     @Override
@@ -45,12 +34,11 @@ public class ParticipantDao extends AbstractDao<Participant> {
             preparedStatement.setString(9, participant.getRaceGroupId().toString());
             preparedStatement.setString(10, participant.getRaceTwainId().toString());
             preparedStatement.setString(11, participant.getChipId().toString());
-            preparedStatement.execute();
     }
 
     @Override
-    public void mappingSelect(PreparedStatement preparedStatement, Participant participant, ResultSet resultSet) throws SQLException {
-        //participant.setId(UUID.fromString(resultSet.getString(id)));
+    public void mappingSelect(PreparedStatement preparedStatement, Participant participant, ResultSet resultSet, String id) throws SQLException {
+        participant.setId(UUID.fromString(resultSet.getString(id)));
         participant.setFirstName(resultSet.getString(2));
         participant.setLastName(resultSet.getString(3));
         participant.setPatronymic(resultSet.getString(4));
@@ -64,12 +52,22 @@ public class ParticipantDao extends AbstractDao<Participant> {
     }
 
     @Override
-    public Participant mappingUpdate(PreparedStatement preparedStatement, Participant participant) {
-        return null;
+    public void mappingUpdate(PreparedStatement preparedStatement, Participant participant) throws SQLException {
+        preparedStatement.setString(1, participant.getFirstName());
+        preparedStatement.setString(2, participant.getLastName());
+        preparedStatement.setString(3, participant.getPatronymic());
+        preparedStatement.setInt(4, participant.getAge());
+        preparedStatement.setString(5, participant.getGender().toString());
+        preparedStatement.setString(6, participant.getRank().toString());
+        preparedStatement.setString(7, participant.getDelegationId().toString());
+        preparedStatement.setString(8, participant.getRaceGroupId().toString());
+        preparedStatement.setString(9, participant.getRaceTwainId().toString());
+        preparedStatement.setString(10, participant.getChipId().toString());
+        preparedStatement.setString(11, participant.getChipId().toString());
     }
 
     @Override
-    public Participant mappingDelete(PreparedStatement preparedStatement, Participant participant) {
-        return null;
+    public void mappingDelete(PreparedStatement preparedStatement, Participant participant) throws SQLException {
+        preparedStatement.setString(1,participant.getId().toString());
     }
 }
