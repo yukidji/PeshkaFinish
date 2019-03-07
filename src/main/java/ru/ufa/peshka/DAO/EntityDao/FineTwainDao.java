@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class FineTwainDao extends AbstractDao <FineTwain> {
-    public FineTwainDao(Connection connection) {
-        super(connection);
+    public FineTwainDao() {
         super.sqlInsert = "INSERT INTO fine_twain(id, number_stage, fine, cut, id_race_tw) VALUES (?, ?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM fine_twain WHERE id = ?";
         super.sqlUpdate = "UPDATE fine_twain SET number_stage = ?, fine = ?, cut = ?, id_race_tw = ? WHERE id = ?";

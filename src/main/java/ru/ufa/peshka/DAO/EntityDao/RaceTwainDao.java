@@ -12,8 +12,7 @@ import java.util.UUID;
 
 public class RaceTwainDao extends AbstractDao <RaceTwain> {
 
-    public RaceTwainDao(Connection connection) {
-        super(connection);
+    public RaceTwainDao() {
         super.sqlInsert = "INSERT INTO race_twain(id, class_distance, start_time, finish_time) VALUES (?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM race_twain WHERE id = ?";
         super.sqlUpdate = "UPDATE race_twain SET class_distance = ?, start_time = ?, finish_time = ? WHERE id = ?";

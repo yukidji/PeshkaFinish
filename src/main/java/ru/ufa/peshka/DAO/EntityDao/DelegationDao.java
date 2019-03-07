@@ -12,8 +12,7 @@ import java.util.UUID;
 
 public class DelegationDao extends AbstractDao<Delegation> {
 
-    public DelegationDao(Connection connection) {
-        super(connection);
+    public DelegationDao() {
         super.sqlInsert = "INSERT INTO delegation(id, name, place, first_name_cap, last_name_cap, patronymic_cap, phone_captain, sum_participant, arrive_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM delegation WHERE id = ?";
         super.sqlUpdate = "UPDATE delegation SET name = ?, place = ?, first_name_cap = ?, last_name_cap = ?, patronymic_cap = ?, phone_captain = ?, sum_participant = ?, arrive_date = ? WHERE id = ?";

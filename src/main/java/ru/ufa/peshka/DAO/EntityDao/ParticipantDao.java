@@ -13,8 +13,7 @@ import java.util.UUID;
 
 public class ParticipantDao extends AbstractDao<Participant> {
 
-    public ParticipantDao(Connection connection) {
-        super(connection);
+    public ParticipantDao() {
         super.sqlInsert = "INSERT INTO participant (id, first_name, last_name, patronymic, age, gender, rank, id_delegation, id_race_group, id_race_twain, id_chip) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM participant WHERE id = ?";
         super.sqlUpdate = "UPDATE participant SET first_name = ?, last_name = ?, patronymic = ?, age = ?, gender = ?, rank = ?, id_delegation = ?, id_race_group = ?, id_race_twain = ?, id_chip = ? WHERE id = ?";

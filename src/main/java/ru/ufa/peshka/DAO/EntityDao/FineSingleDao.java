@@ -10,8 +10,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class FineSingleDao extends AbstractDao<FineSingle> {
-    public FineSingleDao(Connection connection) {
-        super(connection);
+    public FineSingleDao() {
         super.sqlInsert = "INSERT INTO fine_single(id, number_stage, fine, cut, id_race_single) VALUES (?, ?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM fine_single WHERE id = ?";
         super.sqlUpdate = "UPDATE fine_single SET number_stage = ?, fine = ?, cut = ?, id_race_single = ? WHERE id = ?";

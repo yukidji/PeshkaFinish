@@ -12,8 +12,7 @@ import java.util.UUID;
 
 public class FineGroupDao extends AbstractDao <FineGroup> {
 
-    public FineGroupDao(Connection connection) {
-        super(connection);
+    public FineGroupDao() {
         super.sqlInsert = "INSERT INTO fine_group(id, number_stage, fine, cut, id_race_group) VALUES (?, ?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM fine_group WHERE id = ?";
         super.sqlUpdate = "UPDATE fine_group SET number_stage = ?, fine = ?, cut = ?, id_race_group = ? WHERE id = ?";

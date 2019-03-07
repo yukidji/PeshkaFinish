@@ -11,8 +11,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 public class RaceGroupDao extends AbstractDao <RaceGroup> {
-    public RaceGroupDao(Connection connection) {
-        super(connection);
+    public RaceGroupDao() {
         super.sqlInsert = "INSERT INTO race_group(id, class_distance, start_time, finish_time) VALUES (?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM race_group WHERE id = ?";
         super.sqlUpdate = "UPDATE race_group SET class_distance = ?, start_time = ?, finish_time = ? WHERE id = ?";

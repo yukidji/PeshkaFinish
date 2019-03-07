@@ -1,6 +1,5 @@
 package ru.ufa.peshka.DAO;
 
-import com.mysql.jdbc.PreparedStatement;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -42,11 +41,5 @@ public class UtilsDB {
             Class.forName(driver);
             connection = DriverManager.getConnection(url, user, password);
             return connection;
-    }
-
-    public void closeConnection() throws SQLException {
-        if (connection != null) {
-            connection.close();
-        }
     }
 }
