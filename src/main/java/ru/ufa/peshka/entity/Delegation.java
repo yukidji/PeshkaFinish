@@ -69,7 +69,6 @@ public class Delegation extends Person {
     }
 
     public void setArriveDate(Date arriveDate) {
-
         this.arriveDate = arriveDate;
     }
 }

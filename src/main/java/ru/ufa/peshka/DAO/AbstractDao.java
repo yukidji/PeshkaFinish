@@ -6,8 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
-import java.util.function.Supplier;
+import java.sql.Statement;
+import java.util.Set;
 
 public abstract class AbstractDao<T> implements GenericDao <T>{
     private Connection connection;
@@ -17,14 +17,17 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
     public String sqlSelect;
     public String sqlUpdate;
     public String sqlDelete;
+    public String sqlSelectAll;
 
     public String id;
+    public Set<T> sets;
 
     public String getSQL (CRUD param){
         if (param == CRUD.INSERT) return sqlInsert;
         if (param == CRUD.SELECT) return sqlSelect;
         if (param == CRUD.UPDATE) return sqlUpdate;
         if (param == CRUD.DELETE) return sqlDelete;
+        if (param == CRUD.SELECT_ALL) return sqlSelectAll;
         else {
             return null;
         }
@@ -51,7 +54,13 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
                 preparedStatement.setString(1, id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     resultSet.next();
-                    mappingSelect(preparedStatement, t, resultSet, id);
+                    mappingSelect(t, resultSet);
+                }
+            }
+            if (param == CRUD.SELECT_ALL){
+                try (Statement statement = connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(getSQL(param))){
+                    mappingSelectAll(t, sets, resultSet);
                 }
             }
         } catch (SQLException e) {
@@ -81,8 +90,16 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
         return t;
     }
 
+    @Override
+    public Set<T> getAll(Set<T> sets, T t) throws SQLException, ClassNotFoundException {
+        this.sets = sets;
+        fillStatement(t, CRUD.SELECT_ALL);
+        return sets;
+    }
+
     public abstract void mappingInsert(PreparedStatement preparedStatement, T t) throws SQLException;
-    public abstract void mappingSelect(PreparedStatement preparedStatement, T t, ResultSet resultSet, String id) throws SQLException;
     public abstract void mappingUpdate(PreparedStatement preparedStatement, T t) throws SQLException;
     public abstract void mappingDelete(PreparedStatement preparedStatement, T t) throws SQLException;
+    public abstract void mappingSelect(T t, ResultSet resultSet) throws SQLException;
+    public abstract void mappingSelectAll(T t, Set<T> sets, ResultSet resultSet)throws SQLException;
 }

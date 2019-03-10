@@ -7,6 +7,7 @@ import ru.ufa.peshka.entity.Enum.StatusChip;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Set;
 import java.util.UUID;
 
 public class ChipDao extends AbstractDao<Chip> {
@@ -16,6 +17,7 @@ public class ChipDao extends AbstractDao<Chip> {
         super.sqlSelect = "SELECT * FROM chip WHERE id = ?";
         super.sqlUpdate = "UPDATE chip SET status = ? WHERE id = ?";
         super.sqlDelete = "DELETE FROM chip WHERE id = ?";
+        super.sqlSelectAll = "SELECT * FROM chip";
     }
 
     //Create
@@ -40,8 +42,18 @@ public class ChipDao extends AbstractDao<Chip> {
 
     //readBy
     @Override
-    public void mappingSelect(PreparedStatement preparedStatement, Chip chip, ResultSet resultSet, String id) throws SQLException {
-        chip.setId(UUID.fromString(id));
+    public void mappingSelect(Chip chip, ResultSet resultSet) throws SQLException {
+        chip.setId(UUID.fromString(resultSet.getString(1)));
         chip.setStatus(StatusChip.valueOf(resultSet.getString(2)));
+    }
+
+    //readAll
+    @Override
+    public void mappingSelectAll(Chip chip, Set<Chip> sets, ResultSet resultSet) throws SQLException {
+        while (resultSet.next()){
+            chip = new Chip();
+            mappingSelect(chip,resultSet);
+            sets.add(chip);
+        }
     }
 }

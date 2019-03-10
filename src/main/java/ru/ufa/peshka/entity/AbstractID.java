@@ -11,6 +11,10 @@ import java.util.UUID;
 public abstract class AbstractID implements ID {
     private UUID id;
 
+    public AbstractID() {
+        this.id = UUID.randomUUID();
+    }
+
     @Override
     public UUID getId () {
         return id;
@@ -25,9 +29,4 @@ public abstract class AbstractID implements ID {
     public String toString(){
         return ReflectionToStringBuilder.toString(this);
     }
-
-    public AbstractID() {
-        this.id = UUID.randomUUID();
-    }
-
 }

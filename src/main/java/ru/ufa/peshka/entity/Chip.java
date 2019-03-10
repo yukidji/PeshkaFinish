@@ -12,6 +12,10 @@ public class Chip extends AbstractID {
      */
     private StatusChip status;
 
+    public Chip (){
+        this.status = StatusChip.FREE;
+    }
+
     public StatusChip getStatus() {
         return status;
     }
