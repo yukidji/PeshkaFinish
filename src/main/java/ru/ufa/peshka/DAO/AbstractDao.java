@@ -1,5 +1,6 @@
 package ru.ufa.peshka.DAO;
 
+import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.Enum.CRUD;
 
 import java.sql.Connection;
@@ -21,6 +22,8 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
 
     public String id;
     public Set<T> sets;
+
+    private static Logger logger = Logger.getLogger(AbstractDao.class.getName());
 
     public String getSQL (CRUD param){
         if (param == CRUD.INSERT) return sqlInsert;

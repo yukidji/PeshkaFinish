@@ -19,7 +19,7 @@ public class FineSingleDao extends AbstractDao<FineSingle> {
         super.sqlSelectAll = "SELECT * FROM fine_single";
     }
 
-    //FineSingleDao, FineGroupDao, FineTwainDao код повотряется, не знаю как исправть
+    //FineSingleDao, FineGroupDao, FineTwainDao код повотряется...
     //create
     @Override
     public void mappingInsert(PreparedStatement preparedStatement, FineSingle fineSingle) throws SQLException {
