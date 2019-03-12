@@ -1,6 +1,7 @@
 package ru.ufa.peshka.DAO.EntityDao;
 
 import org.apache.commons.lang.ObjectUtils;
+import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.AbstractDao;
 import ru.ufa.peshka.entity.Enum.Gender;
 import ru.ufa.peshka.entity.Enum.Rank;
@@ -26,16 +27,23 @@ public class ParticipantDao extends AbstractDao<Participant> {
         super.sqlSelectAll = "SELECT * FROM participant";
     }
 
+    private static Logger logger = Logger.getLogger(ParticipantDao.class.getName());
+
     //create
     @Override
     public void mappingInsert(PreparedStatement preparedStatement, Participant participant) throws SQLException {
             preparedStatement.setString(1, participant.getId().toString());
-            preparedStatement.setString(2, participant.getFirstName());
-            preparedStatement.setString(3, participant.getLastName());
+            if (participant.getFirstName() == null) logger.debug("firstName = null");
+            else preparedStatement.setString(2, participant.getFirstName());
+            if (participant.getLastName() == null) logger.debug("lastName = null");
+            else preparedStatement.setString(3, participant.getLastName());
             preparedStatement.setString(4, participant.getPatronymic());
-            preparedStatement.setInt(5, participant.getAge());
-            preparedStatement.setString(6, participant.getGender().toString());
-            preparedStatement.setString(7, participant.getRank().toString());
+            if (participant.getAge()<1900) logger.debug("unacceptable age");
+            else preparedStatement.setInt(5, participant.getAge());
+            if (participant.getGender() == null) logger.debug("not gender");
+            else preparedStatement.setString(6, participant.getGender().toString());
+            if (participant.getRank() == null) logger.debug("not rank");
+            else preparedStatement.setString(7, participant.getRank().toString());
             preparedStatement.setString(8, participant.getDelegationId().toString());
             if (participant.getRaceGroupId() != null)
             preparedStatement.setString(9, participant.getRaceGroupId().toString());

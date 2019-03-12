@@ -1,5 +1,6 @@
 package ru.ufa.peshka.DAO.EntityDao;
 
+import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.AbstractDao;
 import ru.ufa.peshka.DAO.Enum.Time;
 import ru.ufa.peshka.entity.Enum.ClassDistance;
@@ -22,11 +23,14 @@ public class RaceSingleDao extends AbstractDao <RaceSingle> {
         super.sqlSelectAll = "SELECT * FROM race_single";
     }
 
+    private static Logger logger = Logger.getLogger(RaceSingleDao.class.getName());
+
     //create
     @Override
     public void mappingInsert(PreparedStatement preparedStatement, RaceSingle raceSingle) throws SQLException {
         preparedStatement.setString(1, raceSingle.getId().toString());
-        preparedStatement.setString(2, (raceSingle.getClassDistance().toString()));
+        if (raceSingle.getClassDistance() == null) logger.debug("ClassDistance = null");
+        else preparedStatement.setString(2, (raceSingle.getClassDistance().toString()));
         preparedStatement.setString(3, raceSingle.getTimeStart());
         preparedStatement.setString(4, raceSingle.getTimeFinish());
         preparedStatement.setString(5, raceSingle.getParticipantId().toString());

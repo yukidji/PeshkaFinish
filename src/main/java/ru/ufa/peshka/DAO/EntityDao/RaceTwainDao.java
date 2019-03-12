@@ -1,5 +1,6 @@
 package ru.ufa.peshka.DAO.EntityDao;
 
+import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.AbstractDao;
 import ru.ufa.peshka.DAO.Enum.Time;
 import ru.ufa.peshka.entity.Enum.ClassDistance;
@@ -22,11 +23,14 @@ public class RaceTwainDao extends AbstractDao <RaceTwain> {
         super.sqlSelectAll = "SELECT * FROM race_twain";
     }
 
+    private static Logger logger = Logger.getLogger(RaceTwainDao.class.getName());
+
     //create
     @Override
     public void mappingInsert(PreparedStatement preparedStatement, RaceTwain raceTwain) throws SQLException {
         preparedStatement.setString(1, raceTwain.getId().toString());
-        preparedStatement.setString(2, (raceTwain.getClassDistance().toString()));
+        if (raceTwain.getClassDistance() == null) logger.debug("ClassDistance = null");
+        else preparedStatement.setString(2, (raceTwain.getClassDistance().toString()));
         preparedStatement.setString(3, raceTwain.getTimeStart());
         preparedStatement.setString(4, raceTwain.getTimeFinish());
     }
@@ -35,6 +39,9 @@ public class RaceTwainDao extends AbstractDao <RaceTwain> {
     @Override
     public void mappingUpdate(PreparedStatement preparedStatement, RaceTwain raceTwain) throws SQLException {
         preparedStatement.setString(1, raceTwain.getClassDistance().toString());
+        //для точно хронометрожа участника. грубо говоря в тот момент когда участник
+        // стартовал/финишировал жмется кнопка (в идеалее это должен быть чип у участника,
+        // RFID метка которая отправляет сигнал на старте и финише) и время участника фиксируется
         if (Time.GET_TIME.toString().equals(raceTwain.getTimeStart()))
             preparedStatement.setTimestamp(2, Timestamp.from(java.time.Instant.now()));
         else preparedStatement.setString(2, raceTwain.getTimeStart());

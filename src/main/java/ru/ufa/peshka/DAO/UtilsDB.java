@@ -20,7 +20,7 @@ public class UtilsDB {
 
     private static Connection connection = null;
     private static Properties property = new Properties();
-    private static Logger logger = Logger.getLogger(UtilsDB.class);
+    private static Logger logger = Logger.getLogger(UtilsDB.class.getName());
 
     static {
          try{

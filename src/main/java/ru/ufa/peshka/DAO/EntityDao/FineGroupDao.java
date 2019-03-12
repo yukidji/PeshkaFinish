@@ -1,5 +1,6 @@
 package ru.ufa.peshka.DAO.EntityDao;
 
+import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.AbstractDao;
 import ru.ufa.peshka.entity.Enum.Cut;
 import ru.ufa.peshka.entity.FineGroup;
@@ -21,11 +22,14 @@ public class FineGroupDao extends AbstractDao <FineGroup> {
         super.sqlSelectAll = "SELECT * FROM fine_group";
     }
 
+    private static Logger logger = Logger.getLogger(FineGroupDao.class.getName());
+
     //create
     @Override
     public void mappingInsert(PreparedStatement preparedStatement, FineGroup fineGroup) throws SQLException {
         preparedStatement.setString(1, fineGroup.getId().toString());
-        preparedStatement.setInt(2, fineGroup.getNumberStage());
+        if (fineGroup.getNumberStage() < 1) logger.debug("not NumberStage");
+        else preparedStatement.setInt(2, fineGroup.getNumberStage());
         preparedStatement.setInt(3, fineGroup.getFine());
         preparedStatement.setString(4, fineGroup.getCut().toString());
         preparedStatement.setString(5, fineGroup.getRaceGroupId().toString());

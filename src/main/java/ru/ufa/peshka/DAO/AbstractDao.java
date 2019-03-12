@@ -1,5 +1,6 @@
 package ru.ufa.peshka.DAO;
 
+import com.mysql.fabric.xmlrpc.base.Param;
 import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.Enum.CRUD;
 
@@ -11,8 +12,7 @@ import java.sql.Statement;
 import java.util.Set;
 
 public abstract class AbstractDao<T> implements GenericDao <T>{
-    private Connection connection;
-    UtilsDB conn = new UtilsDB();
+    protected UtilsDB conn = new UtilsDB();
 
     public String sqlInsert;
     public String sqlSelect;
@@ -32,25 +32,29 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
         if (param == CRUD.DELETE) return sqlDelete;
         if (param == CRUD.SELECT_ALL) return sqlSelectAll;
         else {
+            logger.debug("param is not validate");
             return null;
         }
     }
 
     void fillStatement (T t, CRUD param) throws SQLException, ClassNotFoundException {
-            this.connection = conn.getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(getSQL(param))){
+        try (Connection connection = conn.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(getSQL(param))){
 
             if (param == CRUD.INSERT){
                 mappingInsert(preparedStatement, t);
                 preparedStatement.execute();
+                logger.info("INSERT in DB: " + t.toString());
             }
             if (param == CRUD.UPDATE){
                 mappingUpdate(preparedStatement, t);
                 preparedStatement.executeUpdate();
+                logger.info("UPDATE in DB: " + t.toString());
             }
             if (param == CRUD.DELETE){
                 mappingDelete(preparedStatement, t);
                 preparedStatement.executeUpdate();
+                logger.info("DELETE FROM DB: " + t.toString());
             }
 
             if (param == CRUD.SELECT){
@@ -58,15 +62,18 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     resultSet.next();
                     mappingSelect(t, resultSet);
+                    logger.info("SELECT FROM DB: " + t.toString());
                 }
             }
             if (param == CRUD.SELECT_ALL){
                 try (Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(getSQL(param))){
                     mappingSelectAll(t, sets, resultSet);
+                    logger.info("SELECT_ALL FROM DB: " + sets.toString());
                 }
             }
         } catch (SQLException e) {
+            logger.error("Could not perform CRUD operation. Operation: " + param.toString()+": ", e);
             e.printStackTrace();
         }
     }
