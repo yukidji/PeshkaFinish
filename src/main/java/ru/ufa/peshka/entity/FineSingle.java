@@ -19,15 +19,4 @@ public class FineSingle extends Fine{
     public void setRaceSingleId(UUID RaceSingleId) {
         this.raceSingleId = RaceSingleId;
     }
-
-    @Override
-    public String toString() {
-        return "FineSingle{" +
-                "id=" + getId() +
-                ", raceSingleId =" + raceSingleId +
-                ", numberStage=" + getNumberStage()+
-                ", fine=" + getFine()+
-                ", cut=" + getCut()+
-                '}';
-    }
 }

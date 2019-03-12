@@ -1,5 +1,7 @@
 package ru.ufa.peshka.entity;
 
+import ru.ufa.peshka.entity.Enum.StatusChip;
+
 /**
  * чип участника для регистрации времени на старте и финише
  */
@@ -8,22 +10,18 @@ public class Chip extends AbstractID {
     /**
      * статус чипа (свободен, не свободен) определяет занят чип кем-то или нет
      */
-    private boolean status;
+    private StatusChip status;
 
-    public boolean getStatus() {
+    public Chip (){
+        this.status = StatusChip.FREE;
+    }
+
+    public StatusChip getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(StatusChip status) {
         this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Chip{" +
-                "id=" + getId() +
-                ", status='" + status + '\'' +
-                '}';
     }
 }
 

@@ -23,14 +23,15 @@ DROP TABLE IF EXISTS `fine_twain`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `fine_twain` (
-  `id_fine_sv` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(36) NOT NULL,
   `number_stage` int(11) DEFAULT NULL COMMENT 'номер этапа',
   `fine` int(11) DEFAULT NULL COMMENT 'штрафные баллы за этап',
-  `sn` varchar(45) DEFAULT NULL COMMENT 'снятие с этапа',
-  `id_race_sv` int(11) NOT NULL,
-  PRIMARY KEY (`id_fine_sv`),
-  KEY `fk_fine_sv_race_sv1_idx` (`id_race_sv`),
-  CONSTRAINT `fk_fine_sv_race_sv1` FOREIGN KEY (`id_race_sv`) REFERENCES `race_twain` (`id_race_SV`)
+  `cut` varchar(45) DEFAULT NULL COMMENT 'снятие с этапа',
+  `id_race_tw` varchar(36) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_fine_twain_race_tw1_idx` (`id_race_tw`) /*!80000 INVISIBLE */,
+  CONSTRAINT `fk_fine_twain_race_tw1` FOREIGN KEY (`id_race_tw`) REFERENCES `race_twain` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -43,4 +44,4 @@ CREATE TABLE `fine_twain` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 14:45:29
+-- Dump completed on 2019-02-26  9:26:42

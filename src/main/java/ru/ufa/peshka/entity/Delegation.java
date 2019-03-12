@@ -1,5 +1,7 @@
 package ru.ufa.peshka.entity;
 
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+
 import java.util.Date;
 
 /**
@@ -68,21 +70,5 @@ public class Delegation extends Person {
 
     public void setArriveDate(Date arriveDate) {
         this.arriveDate = arriveDate;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Delegation{" +
-                "id=" + getId() +
-                ", name ='" + name + '\'' +
-                ", place ='" + place + '\'' +
-                ", firstName" + getFirstName() + '\'' +
-                ", lastName" + getLastName() + '\'' +
-                ", patronymic" + getPatronymic() + '\'' +
-                ", phoneCaptain='" + phoneCaptain + '\'' +
-                ", sumParticipant=" + sumParticipant +
-                ", arriveDate='" + arriveDate + '\'' +
-                '}';
     }
 }

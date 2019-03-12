@@ -1,5 +1,7 @@
 package ru.ufa.peshka.entity;
 
+import ru.ufa.peshka.entity.Enum.Cut;
+
 /**
  * штрафы участника, полученные за этап на дистанции
  */
@@ -14,11 +16,13 @@ public abstract class Fine extends AbstractID {
     private int fine;
     /**
      * снятие с этапа
-     * true - участник не снят с этапа
-     * false - участник снят с этапа
      */
-    private boolean cut;
+    private Cut cut;
     //********************************************
+
+    public Fine(){
+        this.cut = Cut.NOT_CUT;
+    }
 
     public int getNumberStage() {
         return numberStage;
@@ -36,11 +40,11 @@ public abstract class Fine extends AbstractID {
         this.fine = fine;
     }
 
-    public boolean getCut() {
+    public Cut getCut() {
         return cut;
     }
 
-    public void setCut(boolean cut) {
+    public void setCut(Cut cut) {
         this.cut = cut;
     }
 

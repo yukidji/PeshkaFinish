@@ -23,15 +23,18 @@ DROP TABLE IF EXISTS `delegation`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `delegation` (
-  `ID_delegation` int(11) NOT NULL AUTO_INCREMENT,
-  `delegation_name` varchar(45) DEFAULT NULL,
+  `id` varchar(36) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
   `place` varchar(45) DEFAULT NULL,
-  `FIO_captain` varchar(45) DEFAULT NULL,
+  `first_name_cap` varchar(45) DEFAULT NULL,
+  `last_name_cap` varchar(45) DEFAULT NULL,
+  `patronymic_cap` varchar(45) DEFAULT NULL,
   `phone_captain` varchar(11) DEFAULT NULL,
   `sum_participant` int(2) DEFAULT NULL COMMENT 'Количество участников',
   `arrive_date` date DEFAULT NULL COMMENT 'дата заезда',
-  PRIMARY KEY (`ID_delegation`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -43,4 +46,4 @@ CREATE TABLE `delegation` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 14:45:30
+-- Dump completed on 2019-02-26  9:26:43

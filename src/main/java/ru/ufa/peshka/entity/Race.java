@@ -1,4 +1,7 @@
 package ru.ufa.peshka.entity;
+
+import ru.ufa.peshka.entity.Enum.ClassDistance;
+
 /**
  * абстрактный класс - забег участников
  */
@@ -15,7 +18,6 @@ public abstract class Race extends AbstractID {
      * время финиша
      */
     private String timeFinish;
-
 
     //***************************************************
 

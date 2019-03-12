@@ -1,5 +1,8 @@
 package ru.ufa.peshka.entity;
 
+import ru.ufa.peshka.entity.Enum.Gender;
+import ru.ufa.peshka.entity.Enum.Rank;
+
 import java.util.UUID;
 
 /**
@@ -19,9 +22,9 @@ public class Participant extends Person {
      */
     private Rank rank;
     /**
-     * идент6а
+     * идентификационный номер делегации участника
      */
-    private UUID deligationId;
+    private UUID delegationId;
     /**
      * идентификационный номер чипа участника
      */
@@ -61,12 +64,12 @@ public class Participant extends Person {
         this.rank = rank;
     }
 
-    public UUID getDeligationId() {
-        return deligationId;
+    public UUID getDelegationId() {
+        return delegationId;
     }
 
-    public void setDeligationId(UUID deligationId) {
-        this.deligationId = deligationId;
+    public void setDelegationId(UUID delegationId) {
+        this.delegationId = delegationId;
     }
 
     public UUID getChipId() {
@@ -91,22 +94,5 @@ public class Participant extends Person {
 
     public void setRaceGroupId(UUID raceGroupId) {
         this.raceGroupId = raceGroupId;
-    }
-
-    @Override
-    public String toString() {
-        return "Participant{" +
-                "id=" + getId() +
-                ", firstName='" + getFirstName() + '\'' +
-                ", lastName='" + getLastName() + '\'' +
-                ", patronymic='" + getLastName() + '\'' +
-                ", age=" + age +
-                ", gender='" + gender + '\'' +
-                ", rank='" + rank + '\'' +
-                ", deligationId=" + deligationId +
-                ", chipId=" + chipId +
-                ", raceTwainId=" + raceTwainId +
-                ", raceGroupId=" + raceGroupId +
-                '}';
     }
 }

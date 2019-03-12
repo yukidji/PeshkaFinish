@@ -4,10 +4,16 @@ package ru.ufa.peshka.entity;
  * Генерация уникального id (этот класс должен наследоваться для всех классов
  * где есть необходимость в id? в chip, Participant и так далее...)
  */
+import org.apache.commons.lang.builder.ReflectionToStringBuilder;
+
 import java.util.UUID;
 
 public abstract class AbstractID implements ID {
     private UUID id;
+
+    public AbstractID() {
+        this.id = UUID.randomUUID();
+    }
 
     @Override
     public UUID getId () {
@@ -19,8 +25,8 @@ public abstract class AbstractID implements ID {
         this.id = id;
     }
 
-    public AbstractID() {
-        this.id = UUID.randomUUID();
+    @Override
+    public String toString(){
+        return ReflectionToStringBuilder.toString(this);
     }
-
 }

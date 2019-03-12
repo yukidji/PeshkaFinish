@@ -23,14 +23,15 @@ DROP TABLE IF EXISTS `fine_group`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `fine_group` (
-  `id_fine_g` int(11) NOT NULL AUTO_INCREMENT,
+  `id` varchar(36) NOT NULL,
   `number_stage` int(11) DEFAULT NULL,
   `fine` int(11) DEFAULT NULL,
-  `sn` varchar(45) DEFAULT NULL,
-  `id_race_g` int(11) NOT NULL,
-  PRIMARY KEY (`id_fine_g`),
-  KEY `fk_fine_g_race_g1_idx` (`id_race_g`),
-  CONSTRAINT `fk_fine_g_race_g1` FOREIGN KEY (`id_race_g`) REFERENCES `race_group` (`id_race_g`)
+  `cut` varchar(45) DEFAULT NULL,
+  `id_race_group` varchar(36) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `fk_id_race_group_idx` (`id_race_group`),
+  CONSTRAINT `fk_id_race_group` FOREIGN KEY (`id_race_group`) REFERENCES `race_group` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -43,4 +44,4 @@ CREATE TABLE `fine_group` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 14:45:33
+-- Dump completed on 2019-02-26  9:26:47
