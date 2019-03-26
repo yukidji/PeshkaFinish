@@ -1,0 +1,117 @@
+body{
+    margin: 0px; /*отступы от родительского элемента*/
+    background: #F0F0F0;
+    font-family: cambria;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    padding: 5px; /*поля вокруг содержимого элемента*/
+    margin-bottom: 10px; /*ОТСТУП СНИЗУ*/
+    background: #F0E68C;/*изменить DEB887 - читабельно, но скучно; 8FBC8F - неплохой вариант*/
+    text-align: center;
+}
+
+h1{
+    color: #3A262F;/*типо темно серый, почти черный*/
+}
+
+.firstCont{
+    margin-top: 10px;
+    margin-left: 10px;
+    align-items: stretch;/*Блок растянут, занимая все доступное место по поперечной оси*/
+    position: relative;
+    right: -39.5%;
+    width: 900px;
+    display: flex;
+
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formCompetition{
+    width: 400px;
+    padding: 5px;
+    background: white;
+
+}
+
+.but{
+    text-align: center;
+}
+
+.but button{
+
+}
+
+button:hover{
+    background: #BC8F8F;
+}
+
+#competitionParam p input{
+    float: right;
+}
+
+aside{
+    border: 3px solid #DFE68C;
+    background: #F5F5DC;
+    margin-right: 0px;
+    padding: 5px;
+    width: 300px;
+}
+
+#nameAside{
+    font-size: 23px;
+}
+
+#headerDistances{
+    border: 1px solid black;
+    background: white;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10PX;
+    margin-top: 10px;
+    margin-bottom: 0px;
+
+}
+
+.distance{
+    background: #90EE90;
+    margin-left: 10px;
+    margin-right: 10PX;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    /*display: none;*/
+}
+
+.addDistance{
+    display: none;
+}
+
+
+.addStage{
+    display: none;
+}
+
+main{
+    background: white;
+    padding: 5px;
+}
+
+main h2{
+    padding-left: 25px;
+}
+
+
+/*картинки*/
+.drop-down-list{
+    width: 3%;
+}
+
+.plus{
+    width: 4%;
+    margin-top:5px;
+}
+
