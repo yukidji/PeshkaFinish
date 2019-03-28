@@ -22,21 +22,19 @@
 </header>
 
 <div class="firstCont">
-    <form class="formCompetition">
-        <div class ="but"><!--при нажатии на кнопку "Обновить данные" поля о соревнованиях должны стать активными и должна появиться конка СОХРАНИТЬ-->
-            <button id="inputInfoBut" onclick="enable()">Внести данные о соревнованиях</button>
-        </div>
-
+    <form class="formCompetition" method="post" action="competition">
         <div id = "competitionParam"><!--накачальный статус полей неактивен-->
-            <p>Название соревнований: <input type="text" name="nameCompetition" class="inputInfo"></p>
-            <p>Место проведения: <input type="text" name="placeCompetition" class="inputInfo"></p>
-            <p>Дата начала соревнований: <input type="text" name="startTime" class="inputInfo"></p><!--календарь-->
-            <p>Дата окончания соревнований: <input type="text" name="stopTime" class="inputInfo"></p><!--календарь-->
-            <p>Главный судья: <input type="text" name="nameJudge" class="inputInfo"></p>
-            <p>Главный секретарь: <input type="text" name="nameSecretary" class="inputInfo"></p>
+            <p>Название соревнований: <input type="text" name="nameCompetition" class="inputInfo" value="${nameCompetition}"></p>
+            <p>Место проведения: <input type="text" name="placeCompetition" class="inputInfo" value="${placeCompetition}"></p>
+            <!--календарь-->
+            <p>Дата начала соревнований: <input type="text" name="startDay" class="inputInfo" value="${startDay}"></p>
+            <!--календарь-->
+            <p>Дата окончания соревнований: <input type="text" name="stopDay" class="inputInfo" value="${stopDay}"></p>
+            <p>Главный судья: <input type="text" name="nameJudge" class="inputInfo" value="${nameJudge}"></p>
+            <p>Главный секретарь: <input type="text" name="nameSecretary" class="inputInfo" value="${nameSecretary}"></p>
         </div>
         <div class ="but">
-            <button>Сохранить данные</button><!--изначально должна быть скрыта-->
+            <button tipe="submit" id="butCompetition">Сохранить данные</button>
         </div>
     </form>
 
@@ -48,9 +46,9 @@
             <li><a href="">Бланк предварительной заявки</a></li>
             <li><a href="">Бланк заявки</a></li>
             <li><a href="">Условия:</a></li>
-            <!--подсписок-->
             <ul>
-                <li><!--Список. должен сам формироваться после заполнения данных о дистанциях соревнований-->
+                <!--Список. должен сам формироваться после заполнения данных о дистанциях соревнований-->
+                <li>
                     <a href="">Личка. 2 класс</a>
                 </li>
                 <li><a href="">Связка. 2 класс</a></li>
@@ -68,15 +66,20 @@
 <div class="distance">
 <form>
     <p>Личка <input type="label" name="date"> <img src="img/drop-down-list.png" class ="drop-down-list"></p>
-    Дистаниця № <span>1</span> <!--сдлелать автоматический подсчет кол-ва дистанций-->
+    <!--сдлелать автоматический подсчет кол-ва дистанций-->
+    Дистаниця № <span>1</span> 
     <img src="img/drop-down-list.png" class ="drop-down-list"><br>
     <img src="img/plus.png" title="Добавить дистанцию" class ="plus">
-    <div class="addDistance"><!--скрытая форма-->
-        <p>Клсасс дистанции: <input type="text" name="classDistance"></p><!--всего 6 классов дистанций (в закрытых 5 классов но закрытые пока не рассматриваем)-->
-        <p>Количество этапов: <input type="text" name="Stages"></p><!--посмотреть по регламенту сколько тапов может быть на дистанции-->
-        <button>Посмотреть названия этапов</button>
+    <!--скрытая форма-->
+    <div class="addDistance">
+    	<!--всего 6 классов дистанций-->
+        <p>Клсасс дистанции: <input type="text" name="classDistance"></p>
+        <!--посмотреть по регламенту сколько тапов может быть на дистанции-->
+        <p>Количество этапов: <input type="text" name="namberStage"></p>
+        <button>Этапы</button>
+        <!--должна появляться при нажатии кнопки-->
         <div class="addStage">
-            <table> <!--должна появляться при нажатии кнопки-->
+            <table> 
                 <tr>
                     <th>№ этапа</th>
                     <th>название этапа</th>
@@ -86,58 +89,58 @@
                     <td></td><!--вставка кода для создания столькоих строк, сколько указано в кол-ве этпов-->
                 </tr>
             </table>
-            <button>сохранить изменения</button>
+            <button>Сохранить изменения</button>
         </div>
     </div>
 </form>
 
 <form>
     <p>Связка  <input type="label" name="date"> <img src="img/drop-down-list.png" class="drop-down-list"></p>
-    Дистаниця № <span>1</span> <!--сдлелать автоматический подсчет кол-ва дистанций-->
+    Дистаниця № <span>1</span> 
     <img src="img/drop-down-list.png" class="drop-down-list"><br>
     <img src="img/plus.png" class="plus" title="Добавить дистанцию">
-    <div class="addDistance"><!--скрытая форма-->
-        <p>Клсасс дистанции: <input type="text" name="classDistance"></p><!--всего 6 классов дистанций (в закрытых 5 классов но закрытые пока не рассматриваем)-->
-        <p>Количество этапов: <input type="text" name="Stages"></p><!--посмотреть по регламенту сколько тапов может быть на дистанции-->
-        <button>Посмотреть названия этапов</button>
+    <!--скрытая форма-->
+    <div class="addDistance">
+        <p>Клсасс дистанции: <input type="text" name="classDistance"></p>
+        <p>Количество этапов: <input type="text" name="Stages"></p>
+        <button>Названия этапов</button>
         <div class="addStage">
-            <table> <!--должна появляться при нажатии кнопки-->
+            <table>
                 <tr>
                     <th>№ этапа</th>
                     <th>название этапа</th>
                     <th>КВ</th>
                 </tr>
                 <tr>
-                    <td></td><!--вставка кода для создания столькоих строк, сколько указано в кол-ве этпов-->
+                    <td></td>
                 </tr>
             </table>
-            <button>сохранить изменения</button>
+            <button>Сохранить изменения</button>
         </div>
     </div>
 </form>
 
 <form>
     <p>Группа  <input type="label" name="date"> <img src="img/drop-down-list.png" class="drop-down-list"></p><!--дата проведения-->
-    <img src=""><!--+ при нажатии на каторый открывается окно/форма для добавления дистанции-->
-    Дистаниця № <span>1</span> <!--сдлелать автоматический подсчет кол-ва дистанций-->
+    Дистаниця № <span>1</span>
     <img src="img/drop-down-list.png" class="drop-down-list"><br>
     <img src="img/plus.png" class="plus" title="Добавить дистанцию">
-    <div class="addDistance"><!--скрытая форма-->
-        <p>Клсасс дистанции: <input type="text" name="classDistance"></p><!--всего 6 классов дистанций (в закрытых 5 классов но закрытые пока не рассматриваем)-->
-        <p>Количество этапов: <input type="text" name="Stages"></p><!--посмотреть по регламенту сколько тапов может быть на дистанции-->
-        <button>Посмотреть названия этапов</button>
+    <div class="addDistance">
+        <p>Клсасс дистанции: <input type="text" name="classDistance"></p>
+        <p>Количество этапов: <input type="text" name="Stages"></p>
+        <button>Названия этапов</button>
         <div class="addStage">
-            <table> <!--должна появляться при нажатии кнопки-->
+            <table>
                 <tr>
                     <th>№ этапа</th>
                     <th>название этапа</th>
                     <th>КВ</th>
                 </tr>
                 <tr>
-                    <td></td><!--вставка кода для создания столькоих строк, сколько указано в кол-ве этпов-->
+                    <td></td>
                 </tr>
             </table>
-            <button>сохранить изменения</button>
+            <button>Сохранить изменения</button>
         </div>
     </div>
 </form>

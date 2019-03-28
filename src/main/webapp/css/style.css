@@ -25,16 +25,15 @@ h1{
     right: -39.5%;
     width: 900px;
     display: flex;
-
     flex-direction: row;
     justify-content: space-between;
 }
 
 .formCompetition{
-    width: 400px;
+    width: 420px;
     padding: 5px;
     background: white;
-
+    border: 2px solid #DFE68C;;
 }
 
 .but{
