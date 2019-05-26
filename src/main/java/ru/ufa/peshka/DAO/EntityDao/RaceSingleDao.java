@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -68,11 +69,11 @@ public class RaceSingleDao extends AbstractDao <RaceSingle> {
 
     //readAll
     @Override
-    public void mappingSelectAll(RaceSingle raceSingle, Set<RaceSingle> sets, ResultSet resultSet) throws SQLException {
+    public void mappingSelectAll(RaceSingle raceSingle, List<RaceSingle> list, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             raceSingle = new RaceSingle();
             mappingSelect(raceSingle, resultSet);
-            sets.add(raceSingle);
+            list.add(raceSingle);
         }
     }
 }

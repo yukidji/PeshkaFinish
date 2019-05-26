@@ -2,7 +2,7 @@ package ru.ufa.peshka.DAO;
 
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.util.Set;
+import java.util.List;
 
 public interface GenericDao <T> {
 
@@ -18,8 +18,6 @@ public interface GenericDao <T> {
     //read
     T readById (T t, String id) throws SQLException, ClassNotFoundException;
 
-     //get All
-     Set<T> getAll(Set<T> set, T t) throws SQLException, ClassNotFoundException;
-
-
+    //get All
+    List<T> getAll(List<T> list, T t) throws SQLException, ClassNotFoundException;
 }

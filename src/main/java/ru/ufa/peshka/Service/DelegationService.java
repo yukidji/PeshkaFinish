@@ -1,5 +1,8 @@
 package ru.ufa.peshka.Service;
 
-public class DelegationService {
+import javax.servlet.http.HttpServlet;
+
+//@WebServlet("/delegation")
+public class DelegationService extends HttpServlet {
 
 }

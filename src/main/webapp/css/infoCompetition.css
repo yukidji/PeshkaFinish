@@ -1,0 +1,8 @@
+#content a {
+    display: block;
+    border: 1px solid black;
+    background: #DCDCDC;
+    border: 1px solid black;
+    height: 25px;
+    margin-bottom: 5px;     
+}

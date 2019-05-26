@@ -12,7 +12,7 @@
 </head>
 <body>
 <h2>Данные делегации</h2>
-<form id="addDelegtion" method="post" action = "http://localhost:8080/PeshkaFinish/delegation/add">
+<form id="addDelegtion" method="post" action = "/PeshkaFinish/delegation/add">
     <div>
         <div>
             <div class="">

@@ -6,6 +6,7 @@ import ru.ufa.peshka.entity.Delegation;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -69,11 +70,11 @@ public class DelegationDao extends AbstractDao<Delegation> {
 
     //readAll
     @Override
-    public void mappingSelectAll(Delegation delegation, Set<Delegation> sets, ResultSet resultSet) throws SQLException {
+    public void mappingSelectAll(Delegation delegation, List<Delegation> list, ResultSet resultSet) throws SQLException {
         while (resultSet.next()) {
             delegation = new Delegation();
             mappingSelect(delegation, resultSet);
-            sets.add(delegation);
+            list.add(delegation);
         }
     }
 }

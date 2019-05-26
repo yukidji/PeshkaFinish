@@ -1,17 +1,16 @@
 package ru.ufa.peshka.DAO.EntityDao;
 
-import org.apache.commons.lang.ObjectUtils;
 import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.AbstractDao;
 import ru.ufa.peshka.entity.Enum.Gender;
 import ru.ufa.peshka.entity.Enum.Rank;
 import ru.ufa.peshka.entity.Participant;
 
-import java.lang.reflect.Type;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -105,11 +104,11 @@ public class ParticipantDao extends AbstractDao<Participant> {
 
     //getAll
     @Override
-    public void mappingSelectAll(Participant participant, Set<Participant> sets, ResultSet resultSet) throws SQLException {
+    public void mappingSelectAll(Participant participant, List<Participant> list, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             participant = new Participant();
             mappingSelect(participant, resultSet);
-            sets.add(participant);
+            list.add(participant);
         }
     }
 }

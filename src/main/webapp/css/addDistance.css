@@ -1,0 +1,32 @@
+.dist{
+    display: flex;
+    flex-direction: row; /*элементы расположены по горизонтали (вдоль)*/
+    justify-content: space-between;
+    align-items: stretch;/*Блок растянут, занимая все доступное место по поперечной оси*/
+}
+
+
+.dist div{
+    width: 33%;
+}
+
+#formDist{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+b{
+    margin-left: 30%;
+}
+
+.poleDist{
+    float: right;
+    width: 100px;
+    height: 25px;   
+}
+
+form button {
+    margin-left: 25%;
+}

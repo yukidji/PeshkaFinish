@@ -8,9 +8,10 @@ import java.util.UUID;
 public class Distance extends AbstractID {
 
     private UUID idCompetition;
-    private ClassDistance classDist;
+    private int classDist;
     private int numberStage;
     private TypeDistance typeDistance;
+    private String data;
 
     public UUID getIdCompetition() {
         return idCompetition;
@@ -20,11 +21,11 @@ public class Distance extends AbstractID {
         this.idCompetition = idCompetition;
     }
 
-    public ClassDistance getClassDist() {
+    public int getClassDist() {
         return classDist;
     }
 
-    public void setClassDist(ClassDistance classDist) {
+    public void setClassDist(int classDist) {
         this.classDist = classDist;
     }
 
@@ -42,5 +43,13 @@ public class Distance extends AbstractID {
 
     public void setTypeDistance(TypeDistance typeDistance) {
         this.typeDistance = typeDistance;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

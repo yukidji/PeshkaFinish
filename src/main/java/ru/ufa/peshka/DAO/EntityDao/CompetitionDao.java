@@ -6,6 +6,7 @@ import ru.ufa.peshka.entity.Competition;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -13,7 +14,7 @@ public class CompetitionDao extends AbstractDao<Competition> {
 
     public CompetitionDao() {
         super.sqlInsert = "INSERT INTO competition (id, name, place, startDay, stopDay, " +
-                "nameJudge, nameSecretary) " + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                "nameJudge, nameSecretary) VALUES (?, ?, ?, ?, ?, ?, ?)";
         super.sqlSelect = "SELECT * FROM competition WHERE id = ?";
         super.sqlUpdate = "UPDATE competition SET name = ?, place= ?, startDay = ?, stopDay= ?, nameJudge= ?, nameSecretary= ? WHERE id = ?";
         super.sqlDelete = "DELETE FROM competition WHERE id = ?";
@@ -64,11 +65,11 @@ public class CompetitionDao extends AbstractDao<Competition> {
 
     //getAll
     @Override
-    public void mappingSelectAll(Competition competition, Set<Competition> sets, ResultSet resultSet) throws SQLException {
+    public void mappingSelectAll(Competition competition, List<Competition> list, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             competition = new Competition();
             mappingSelect(competition, resultSet);
-            sets.add(competition);
+            list.add(competition);
         }
     }
 }

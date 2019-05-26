@@ -8,6 +8,7 @@ import ru.ufa.peshka.entity.FineGroup;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -63,11 +64,11 @@ public class FineGroupDao extends AbstractDao <FineGroup> {
 
     //readAll
     @Override
-    public void mappingSelectAll(FineGroup fineGroup, Set<FineGroup> sets, ResultSet resultSet) throws SQLException {
+    public void mappingSelectAll(FineGroup fineGroup, List<FineGroup> list, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             fineGroup = new FineGroup();
             mappingSelect(fineGroup,resultSet);
-            sets.add(fineGroup);
+            list.add(fineGroup);
         }
     }
 }

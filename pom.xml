@@ -23,7 +23,6 @@
         <version.gson>2.8.5</version.gson>
         <version.war.plugin>2.6</version.war.plugin>
         <version.javax.servlet.api>4.0.0</version.javax.servlet.api>
-        <version.jstl>1.2</version.jstl>
         <version.javax.el>2.2</version.javax.el>
     </properties>
 
@@ -87,12 +86,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${version.javax.servlet.api}</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${version.jstl}</version>
         </dependency>
 
         <dependency>

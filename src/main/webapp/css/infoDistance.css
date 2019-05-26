@@ -1,0 +1,13 @@
+.dist{
+	 flex-direction: row; /*элементы расположены по горизонтали (вдоль)*/
+    justify-content: space-between;
+    align-items: stretch;/*Блок растянут, занимая все доступное место по поперечной оси*/
+}
+
+.dist div{
+	width: 33.3%;
+}
+/*????????*/
+.yu{
+	padding-left: 500px;
+}

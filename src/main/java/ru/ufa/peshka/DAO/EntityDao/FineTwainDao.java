@@ -8,6 +8,7 @@ import ru.ufa.peshka.entity.FineTwain;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -60,11 +61,11 @@ public class FineTwainDao extends AbstractDao <FineTwain> {
     }
 
     @Override
-    public void mappingSelectAll(FineTwain fineTwain, Set<FineTwain> sets, ResultSet resultSet) throws SQLException {
+    public void mappingSelectAll(FineTwain fineTwain, List<FineTwain> list, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             fineTwain = new FineTwain();
             mappingSelect(fineTwain,resultSet);
-            sets.add(fineTwain);
+            list.add(fineTwain);
         }
     }
 }

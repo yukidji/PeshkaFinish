@@ -1,6 +1,5 @@
 package ru.ufa.peshka.DAO;
 
-import com.mysql.fabric.xmlrpc.base.Param;
 import org.apache.log4j.Logger;
 import ru.ufa.peshka.DAO.Enum.CRUD;
 
@@ -9,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Set;
+import java.util.List;
 
 public abstract class AbstractDao<T> implements GenericDao <T>{
     protected UtilsDB conn = new UtilsDB();
@@ -19,9 +18,10 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
     public String sqlUpdate;
     public String sqlDelete;
     public String sqlSelectAll;
+    public String sqlSelectListById;
 
     public String id;
-    public Set<T> sets;
+    public List<T> list;
 
     private static Logger logger = Logger.getLogger(AbstractDao.class.getName());
 
@@ -68,8 +68,8 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
             if (param == CRUD.SELECT_ALL){
                 try (Statement statement = connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(getSQL(param))){
-                    mappingSelectAll(t, sets, resultSet);
-                    logger.info("SELECT_ALL FROM DB: " + sets.toString());
+                    mappingSelectAll(t, list, resultSet);
+                    logger.info("SELECT_ALL FROM DB: " + list.toString());
                 }
             }
         } catch (SQLException e) {
@@ -101,15 +101,15 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
     }
 
     @Override
-    public Set<T> getAll(Set<T> sets, T t) throws SQLException, ClassNotFoundException {
-        this.sets = sets;
+    public List<T> getAll(List<T> list, T t) throws SQLException, ClassNotFoundException {
+        this.list = list;
         fillStatement(t, CRUD.SELECT_ALL);
-        return sets;
+        return list;
     }
 
     public abstract void mappingInsert(PreparedStatement preparedStatement, T t) throws SQLException;
     public abstract void mappingUpdate(PreparedStatement preparedStatement, T t) throws SQLException;
     public abstract void mappingDelete(PreparedStatement preparedStatement, T t) throws SQLException;
     public abstract void mappingSelect(T t, ResultSet resultSet) throws SQLException;
-    public abstract void mappingSelectAll(T t, Set<T> sets, ResultSet resultSet)throws SQLException;
+    public abstract void mappingSelectAll(T t, List<T> list, ResultSet resultSet)throws SQLException;
 }

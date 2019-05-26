@@ -1,0 +1,41 @@
+table {
+margin-top: 10px;
+margin-bottom: 10px;
+border-spacing: 0 0px;
+font-family: 'Open Sans', sans-serif;
+/*margin-left: 50px;*/
+}
+
+th {
+font-weight: bold;
+padding: 10px 20px;
+background: #56433D;
+color: #F9C941;
+border: 1px solid black; 
+font-size: 0.9em;
+}
+
+td {
+vertical-align: middle;
+font-size: 14px;
+/*text-align: center;*/
+border: 1px solid black;
+
+}
+
+.centerColumn{
+	text-align: center;
+}
+
+.no_senter{
+padding-left: 5px;
+padding-right: 10px;
+}
+
+.number {
+	width: 50px;
+}
+
+#time{
+	width: 50px;
+}

@@ -7,6 +7,7 @@ import ru.ufa.peshka.entity.Enum.StatusChip;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -49,11 +50,11 @@ public class ChipDao extends AbstractDao<Chip> {
 
     //readAll
     @Override
-    public void mappingSelectAll(Chip chip, Set<Chip> sets, ResultSet resultSet) throws SQLException {
+    public void mappingSelectAll(Chip chip, List<Chip> list, ResultSet resultSet) throws SQLException {
         while (resultSet.next()){
             chip = new Chip();
             mappingSelect(chip,resultSet);
-            sets.add(chip);
+            list.add(chip);
         }
     }
 }

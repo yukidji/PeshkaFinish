@@ -1,5 +1,6 @@
 package ru.ufa.peshka.entity;
 
+import java.util.Comparator;
 import java.util.UUID;
 
 public class Stage extends AbstractID {
@@ -39,4 +40,12 @@ public class Stage extends AbstractID {
     public void setControlTime(String controlTime) {
         this.controlTime = controlTime;
     }
+
+    //стырила потом разберусь как работает
+    public static final Comparator<Stage> COMPARE_BY_NUMBER = new Comparator<Stage>() {
+        @Override
+        public int compare(Stage lhs, Stage rhs) {
+            return lhs.getNumber() - rhs.getNumber();
+        }
+    };
 }

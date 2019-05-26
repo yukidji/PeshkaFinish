@@ -3,4 +3,108 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--заполнение данных о соревнованиях (doPost) и их вывод на страницу (doGet)-->
+    <servlet>
+        <servlet-name>CompetitionServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.CompetitionServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CompetitionServlet</servlet-name>
+        <url-pattern>/competition</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>addCompetition.jsp</welcome-file>
+        <welcome-file>infoCompetition.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--заполнение дистанции личка (doPost)-->
+    <servlet>
+        <servlet-name>DistanceServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.AddDistanceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DistanceServlet</servlet-name>
+        <url-pattern>/distance</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>addDistance.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--заполнение этапов (doPost) и их извлечение (doGet)-->
+    <servlet>
+        <servlet-name>StageServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.StageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StageServlet</servlet-name>
+        <url-pattern>/stage</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>addStage.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--формирование таблицы для стартовых протоколов (doGet)-->
+    <servlet>
+    <servlet-name>TableStartServlet</servlet-name>
+    <servlet-class>ru.ufa.peshka.Service.generatorServlet</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>TableStartServlet</servlet-name>
+        <url-pattern>/table</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--формирование стартовых протоколов-->
+    <servlet>
+        <servlet-name>StartServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.StartServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>StartServlet</servlet-name>
+        <url-pattern>/startP</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>generator.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--формирование финишных протоколов-->
+    <servlet>
+        <servlet-name>FinishServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.FinishServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FinishServlet</servlet-name>
+        <url-pattern>/startF</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>generator.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--Удаление дистанции и ее этапов-->
+    <servlet>
+        <servlet-name>DeleteDistServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.DeleteDistServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteDistServlet</servlet-name>
+        <url-pattern>/deleteDistance</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>infoDistance.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--Добавление делегации-->
+    <servlet>
+        <servlet-name>DelegationService</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.DelegationService</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DelegationService</servlet-name>
+        <url-pattern>/delegation</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>addDelegation.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
