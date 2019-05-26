@@ -1,7 +1,7 @@
 body{
-    margin: 0px; /*отступы от родительского элемента*/
+    margin: 0; /*отступы от родительского элемента*/
     background: #F0F0F0;
-    font-family: cambria;
+    font-family: cambria, serif;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -58,7 +58,6 @@ footer div {
 #content{
     background: white;
     padding: 10px;
-    padding-left: 10px;
     border: 3px solid #F0DC8C;
     width: 80%;
 }
@@ -77,10 +76,9 @@ footer div {
 }
 
 aside{
-    padding-left: 5px;
     border: 3px solid #F0DC8C;
     background: #F5F5DC;
-    margin-right: 0px;
+    margin-right: 0;
     padding: 5px;
     width: 395px;
 }
