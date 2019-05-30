@@ -51,8 +51,10 @@ footer div {
     flex-direction: row; /*элементы расположены по горизонтали (вдоль)*/
     justify-content: space-between;
     align-items: stretch;/*Блок растянут, занимая все доступное место по поперечной оси*/
-    /*min-height: 68%; */
-    height: auto;
+    height: auto; /*68%;
+    /*min-height: 68%;*/
+    /*overflow:auto;*/
+    /*max-height:  ;*/
 }
 
 #content{
@@ -60,6 +62,7 @@ footer div {
     padding: 10px;
     border: 3px solid #F0DC8C;
     width: 80%;
+    /*overflow:auto; /*если тект не влезвет то появляется полоса прокрути*/
 }
 
 #form{
