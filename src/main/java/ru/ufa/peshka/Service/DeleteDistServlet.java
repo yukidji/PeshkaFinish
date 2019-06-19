@@ -37,6 +37,6 @@ public class DeleteDistServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        getServletContext().getRequestDispatcher("/stage").forward(req, resp);
+        req.getRequestDispatcher("/stage").forward(req, resp);
     }
 }

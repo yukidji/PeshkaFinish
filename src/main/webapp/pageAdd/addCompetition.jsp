@@ -1,4 +1,4 @@
-<%@ page import="ru.ufa.peshka.Service.CompetitionServlet" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Пользователь
   Date: 04.04.2019
@@ -13,7 +13,7 @@
     <title>Добивить информацию о соревнованиях</title>
     <link rel="stylesheet" type="text/css" href="/PeshkaFinish/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="/PeshkaFinish/css/addCompetition.css"/>
-    <script type ="text/javascript" src = "js/script.js"></script>
+    <script type ="text/javascript" src = "/PeshkaFinish/js/script.js"></script>
     <script type="text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
@@ -24,22 +24,24 @@
 <div class="mainANDaside">
 
     <div id="content">
-        <form method="post" action="/PeshkaFinish/competition">
-            <div id="form">
-                <p id="nameComp">Название соревнований: <input type = "text" name="name" class="infoCompetition" value="${competition.name}"></p>
-                <p>Место проведения: <input type="text" name="place" class="infoCompetition" value="${competition.place}"></p>
+        <form id="form" method="post" action="/PeshkaFinish/competition">
+                <p id="nameComp">Название соревнований: <input type = "text" name="name" value="${competition.name}"></p>
+                <p>Место проведения: <input type="text" name="place" value="${competition.place}"></p>
                 <!--календарь-->
-                <p>Дата начала соревнований: <input type="text" name="startDay" class="infoCompetition" value="${competition.startDay}"></p>
+                <p>Дата начала соревнований: <input type="text" name="startDay" value="${competition.startDay}"></p>
                 <!--календарь-->
-                <p>Дата окончания соревнований: <input type="text" name="stopDay" class="infoCompetition" value="${competition.stopDay}"></p>
-                <p>Главный судья: <input type="text" name="nameJudge" class="infoCompetition" value="${competition.nameJudge}"></p>
-                <p>Главный секретарь: <input type="text" name="nameSecretary" class="infoCompetition" value="${competition.nameSecretary}"></p>
-            </div>
+                <p>Дата окончания соревнований: <input type="text" name="stopDay" value="${competition.stopDay}"></p>
+                <p>Главный судья: <input type="text" name="nameJudge" value="${competition.nameJudge}"></p>
+                <p>Главный секретарь: <input type="text" name="nameSecretary" value="${competition.nameSecretary}"></p>
             <div class ="but">
                 <button tipe="submit">Сохранить данные</button>
             </div>
         </form>
-        <a href="/PeshkaFinish/index.jsp">Вернуться на главную</a><br>
+        <div id="menu">
+            <a href="/PeshkaFinish/competition"><img src="/PeshkaFinish/img/menu.png" width="20px">Посмотреть информацию о соревнованиях</a>
+            <a href="/PeshkaFinish/stage"><img src="/PeshkaFinish/img/menu.png" width="20px">Посмотреть информацию о дистанциях</a>
+            <a href="/PeshkaFinish/index.jsp"><img src="/PeshkaFinish/img/menu.png" width="20px">Вернуться на главную</a><br>
+        </div>
     </div>
 
     <%@ include file="/pattern/aside.jsp"%>

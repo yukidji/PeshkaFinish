@@ -19,13 +19,13 @@
 </head>
 
 <body>
-<!--<jsp:useBean id="competition" scope="request" class="ru.ufa.peshka.entity.Competition"/>-->
 <%@ include file="/pattern/header.jsp"%>
 
 <div class="mainANDaside">
     <div id="content">
-        <div class = "dist">
-            <div>
+        <div id="menu">
+        <a href="#" onclick="toggleinformer(); return false;"> <img src="/PeshkaFinish/img/menu.png" width="20px"> Добавить диcтанцию "Личка"</a>
+            <div id='informer'>
                 <form id="formDist" action="/PeshkaFinish/distance?typeD=one" method="post">
                     <p><b>Личка</b></p>
                     <p>Дата: <input type="text" name="data" class="poleDist"></p>
@@ -34,8 +34,8 @@
                     <button type="submit" name="one">Добавить этапы</button>
                 </form>
             </div>
-
-            <div>
+            <a href="#" onclick="toggleinformer2(); return false;"> <img src="/PeshkaFinish/img/menu.png" width="20px">Добавить диcтанцию "Связка"</a>
+            <div id='informer2'>
                 <form id="formDist" method="post" action="/PeshkaFinish/distance?typeD=two">
                     <p><b>Связка</b></p>
                     <p>Дата: <input type="text" name="data" class="poleDist"></p>
@@ -44,8 +44,8 @@
                     <button type="submit" name="two">Добавить этапы</button>
                 </form>
             </div>
-
-            <div>
+            <a href="#" onclick="toggleinformer3(); return false;"><img src="/PeshkaFinish/img/menu.png" width="20px">Добавить диcтанцию "Группа"</a>
+            <div id='informer3'>
                 <form id="formDist" method="post" action="/PeshkaFinish/distance?typeD=four">
                     <p><b>Группа</b></p>
                     <p>Дата: <input type="text" name="data" class="poleDist"></p>
@@ -54,11 +54,11 @@
                     <button type="submit" name="four">Добавить этапы</button>
                 </form>
             </div>
+            <br>
+            <a href="/PeshkaFinish/competition"><img src="/PeshkaFinish/img/menu.png" width="20px">Посмотреть информацию о соревнованиях</a>
+            <a href="/PeshkaFinish/stage"><img src="/PeshkaFinish/img/menu.png" width="20px">Посмотреть информацию о дистанциях</a>
+            <a href="/PeshkaFinish/index.jsp"><img src="/PeshkaFinish/img/menu.png" width="20px">Вернуться на главную</a>
         </div>
-        <a href="/PeshkaFinish/index.jsp">Вернуться на главную</a><br>
-        <!--должна быть ссылка на сервлет для обработки вывода данных-->
-        <!--<a href="/PeshkaFinish/pageInfo/infoDistance.jsp">Посмотреть информацию о дистанциях</a><br>-->
-        <a href="/PeshkaFinish/stage">Посмотреть информацию о дистанциях</a><br>
     </div>
       <%@ include file="/pattern/aside.jsp" %>
 </div>

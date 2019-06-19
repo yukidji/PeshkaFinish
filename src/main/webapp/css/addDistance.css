@@ -5,12 +5,18 @@
     align-items: stretch;/*Блок растянут, занимая все доступное место по поперечной оси*/
 }
 
+#informer, #informer2, #informer3{
+    display: none;
+    padding: 10px;
+}
 
 .dist div{
     width: 33%;
 }
 
 #formDist{
+    margin-left: 400px;
+    width: 300px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;

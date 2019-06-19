@@ -1,13 +1,23 @@
-.dist{
-	 flex-direction: row; /*элементы расположены по горизонтали (вдоль)*/
-    justify-content: space-between;
-    align-items: stretch;/*Блок растянут, занимая все доступное место по поперечной оси*/
+#informer, #informer2, #informer3{
+    display: none;
 }
 
-.dist div{
-	width: 33.3%;
+#info{
+	padding-left: 15px;
 }
-/*????????*/
-.yu{
-	padding-left: 500px;
+
+table{
+border-spacing: 0 0px;
+border: 1px black solid;
+}
+
+th, td{
+	border-left: 1px black solid;
+	border-top: 1px black solid;
+}
+
+#del{
+	float: right;
+	font-weight: bold;
+	color: red;
 }

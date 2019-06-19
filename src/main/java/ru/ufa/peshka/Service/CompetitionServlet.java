@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -29,59 +30,62 @@ public class CompetitionServlet extends HttpServlet  {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
 
-        try {
-           competitionDao.readById(competition, "054dd457-f081-427e-85db-7ebf0e56aa44");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        HttpSession session = req.getSession();//получаем сессию
+        if (session.getAttribute("login") == null) req.getRequestDispatcher("/entry.jsp").forward(req, resp);
+        else {
+            //читаем из БД строку соревнований. соревнования в приложении одни
+            try {
+                competitionDao.readById(competition, "054dd457-f081-427e-85db-7ebf0e56aa44");
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            competition.setName(req.getParameter("name"));
+            competition.setPlace(req.getParameter("place"));
+            competition.setStartDay(req.getParameter("startDay"));
+            competition.setStopDay(req.getParameter("stopDay"));
+            competition.setNameJudge(req.getParameter("nameJudge"));
+            competition.setNameSecretary(req.getParameter("nameSecretary"));
+
+            try {
+                competitionDao.update(competition);
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            req.setAttribute("competition", competition);
+            req.getRequestDispatcher("/pageInfo/infoCompetition.jsp").forward(req, resp);
         }
-
-        competition.setName(req.getParameter("name"));
-        competition.setPlace(req.getParameter("place"));
-        competition.setStartDay(req.getParameter("startDay"));
-        competition.setStopDay(req.getParameter("stopDay"));
-        competition.setNameJudge(req.getParameter("nameJudge"));
-        competition.setNameSecretary(req.getParameter("nameSecretary"));
-
-        try {
-            competitionDao.update(competition);
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-            e.printStackTrace();
-        }
-
-        req.setAttribute("competition", competition);
-        getServletContext().getRequestDispatcher("/pageInfo/infoCompetition.jsp").forward(req, resp);
     }
 
-    //извлекает данные из бд и выводит их на странице
+    //извлекает данные из бд и выводит их на странице (файл jsp infoCompetition)
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //настройка кодировки
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=utf-8");
 
-        String action = req.getParameter("action");
+        HttpSession session = req.getSession();//получаем сессию
+        if (session.getAttribute("login") == null) req.getRequestDispatcher("/entry.jsp").forward(req, resp);
+        else {
+            String action = req.getParameter("action");
 
-        try {
-            competitionDao.readById(competition, "054dd457-f081-427e-85db-7ebf0e56aa44");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            //читаем из БД соревнования
+            try {
+                competitionDao.readById(competition, "054dd457-f081-427e-85db-7ebf0e56aa44");
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            req.setAttribute("competition", competition);
+            switch (action == null ? "info" : "update") {
+                case "info":
+                    //путь не трогать /pageInfo/infoCompetition.jsp. не добавлять к нему PeshkaFinish бла бла бла
+                    req.getRequestDispatcher("/pageInfo/infoCompetition.jsp").forward(req, resp);
+                    break;
+                case "update":
+                    req.getRequestDispatcher("/pageAdd/addCompetition.jsp").forward(req, resp);
+                    break;
+            }
         }
-
-        req.setAttribute("competition", competition);
-        switch (action == null? "info" : "update"){
-            case "info":
-                //путь не трогать /pageInfo/infoCompetition.jsp. не добавлять к нему PeshkaFinish бла бла бла
-                getServletContext().getRequestDispatcher("/pageInfo/infoCompetition.jsp").forward(req, resp);
-                break;
-            case "update":
-                getServletContext().getRequestDispatcher("/pageAdd/addCompetition.jsp").forward(req, resp);
-                break;
-        }
-
     }
 }

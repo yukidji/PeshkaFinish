@@ -1,0 +1,29 @@
+#in{
+border: 1px solid black;
+width: 230px;
+padding-left: 10px;
+padding-right: 10px;
+margin-left: 50%;
+font-size: 16px;
+
+}
+
+#head{
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+p input {
+	float: right;
+}
+
+button {
+	margin-left: 90px;
+}
+
+#info {
+	color:red;
+	font-size: 14px;
+	letter-spacing: 1px;
+}

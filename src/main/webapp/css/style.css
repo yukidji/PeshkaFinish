@@ -1,6 +1,6 @@
 body{
     margin: 0; /*отступы от родительского элемента*/
-    background: #F0F0F0;
+    background: #F0F0F0; /*сероватый*/
     font-family: cambria, serif;
     display: flex;
     flex-direction: column;
@@ -10,15 +10,57 @@ body{
 }
 
 header{
+    display: flex;
+    flex-direction: row;/*размещение элементов по оси X*/
+    letter-spacing: 1px;/*интервал между символами*/
+    background: #dde644;/*цвет шапки жетло-зеленый*/
+    align-items: center;/*по вертикали располагатся по центру*/
+    justify-content: flex-start;/* Равномерно распределяет все элементы по ширине flex-блока.
+                                   Первый элемент вначале, последний в конце */
     padding: 5px; /*поля вокруг содержимого элемента*/
-    background: #f2df3e;
-    text-align: center;
-    height: 17%;
+    height: 200px;
+}
+
+.nav{
+    /*padding-right: 200px;*/
+    padding-bottom: 10px; 
+    align-self: flex-end;
+}
+
+.nav ul li {
+    display: inline-block; /* Отображать как строчный элемент */
+    border-right: 2px solid black;
+    border-left: 2px solid black; 
+    padding-left: 7px;
+    padding-right: 7px; 
+    font-size: 30px;
+    font-weight: bold;
+   }
+
+#entry {
+ padding-right: 40px;
+ align-self: flex-end;
+ margin-left: auto;
+ padding-bottom: 30px; 
+}
+
+#entry span {
+    font-size: 20px;
+    margin-right: 5px;
+    padding: 5px;
+    background: #ffffff;
+    border-radius: 10px;
+    border:1px solid black;
+}
+
+a{
+    text-decoration: none;
 }
 
 footer{
     position: relative;
-    background-color: #A666;
+    background: #e4e6c7;
+    border-top: 2px solid #cdcfb3;
     height: 15%; 
     bottom: 0;
     width: 100%;
@@ -34,7 +76,6 @@ footer div {
     float: right;
     padding: 0;
     margin-top: 20px;
-    /*border: 1px solid black;*/
 }
 
 #imgVk{
@@ -44,30 +85,36 @@ footer div {
      float: right;
 }
 
+/*контент*/
 .mainANDaside {
-    padding-left: 10%;
-    width: 80%;
     display: flex;
     flex-direction: row; /*элементы расположены по горизонтали (вдоль)*/
     justify-content: space-between;
     align-items: stretch;/*Блок растянут, занимая все доступное место по поперечной оси*/
-    height: auto; /*68%;
-    /*min-height: 68%;*/
-    /*overflow:auto;*/
-    /*max-height:  ;*/
+    height: auto;
 }
 
 #content{
     background: white;
     padding: 10px;
-    border: 3px solid #F0DC8C;
+    border-right: 5px solid #F0DC8C;
     width: 80%;
-    /*overflow:auto; /*если тект не влезвет то появляется полоса прокрути*/
+    min-height: 500px;
 }
 
-#form{
-    width: 500px;
-    margin-left: 150px;
+#menu a {
+    display: block;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    /*background: #DCDCDC;*/
+    height: 25px;
+    width: auto;
+    margin-bottom: 5px;     
+}
+
+#content #form{
+    /*width: 500px;*/
     margin-bottom: 10px;
     margin-top: 10px; 
     padding: 10px;
@@ -78,23 +125,23 @@ footer div {
     text-align: center;
 }
 
+#content ul li{
+    font-family: 'Comfortaa', cursive;
+    font-size: 16px;
+}
+
 aside{
-    border: 3px solid #F0DC8C;
     background: #F5F5DC;
     margin-right: 0;
     padding: 5px;
     width: 395px;
+    overflow:auto; /*если тект не влезвет то появляется полоса прокрути*/
 }
 
 #nameAside{
     font-size: 23px;
 }
 
-
-ul li{
-    font-family: 'Comfortaa', cursive;
-    font-size: 16px;
-}
 
 a:link{
     color: black;

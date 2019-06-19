@@ -46,7 +46,7 @@
     <!--формирование таблицы для стартовых протоколов (doGet)-->
     <servlet>
     <servlet-name>TableStartServlet</servlet-name>
-    <servlet-class>ru.ufa.peshka.Service.generatorServlet</servlet-class>
+    <servlet-class>ru.ufa.peshka.Service.GeneratorServlet</servlet-class>
 </servlet>
     <servlet-mapping>
         <servlet-name>TableStartServlet</servlet-name>
@@ -95,7 +95,33 @@
         <welcome-file>infoDistance.jsp</welcome-file>
     </welcome-file-list>
 
-    <!--Добавление делегации-->
+    <!--Вход на сайт-->
+    <servlet>
+        <servlet-name>EntryServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.EntryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EntryServlet</servlet-name>
+        <url-pattern>/entry</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>entry.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--Выход с сайта-->
+    <servlet>
+        <servlet-name>OutServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.OutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OutServlet</servlet-name>
+        <url-pattern>/out</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>entry.jsp</welcome-file>
+    </welcome-file-list>
+
+        <!--Добавление делегации-->
     <servlet>
         <servlet-name>DelegationService</servlet-name>
         <servlet-class>ru.ufa.peshka.Service.DelegationService</servlet-class>
@@ -106,5 +132,44 @@
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>addDelegation.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--Добавление участников-->
+    <servlet>
+        <servlet-name>AddParticipant</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.AddParticipant</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddParticipant</servlet-name>
+        <url-pattern>/participant</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>addParticipant.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--Добавление электронных меток-->
+    <servlet>
+        <servlet-name>AddChipServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.AddChipServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddChipServlet</servlet-name>
+        <url-pattern>/addChip</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>addChip.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!--Вывод чипов-->
+    <servlet>
+        <servlet-name>InfoChipServlet</servlet-name>
+        <servlet-class>ru.ufa.peshka.Service.InfoChipServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InfoChipServlet</servlet-name>
+        <url-pattern>/chip</url-pattern>
+    </servlet-mapping>
+    <welcome-file-list>
+        <welcome-file>addChip.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

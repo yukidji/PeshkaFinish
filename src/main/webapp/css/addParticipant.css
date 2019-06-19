@@ -1,0 +1,42 @@
+h2{
+	text-align: center;
+}
+
+#form{
+}
+
+input{
+
+}
+
+table{
+	border-spacing: 0 0px;
+}
+
+th, td{
+	border: solid black 1px;
+}
+
+.number{
+	width: 20px;
+}
+
+#nameDelegation, #placeDelegation, #date{
+	width: 100px;
+}
+
+#firstName, #lastName{
+	width: 130px;
+}
+
+#idChip{
+	width: 120px;
+}
+
+#checkbox {
+	margin-left: 30px;
+}
+
+#raceTwainId, #raceGroupId{
+	width: 60px;
+}

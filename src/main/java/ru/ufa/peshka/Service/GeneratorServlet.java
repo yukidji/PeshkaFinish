@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //@WebServlet("/table")
-public class generatorServlet extends HttpServlet {
+public class GeneratorServlet extends HttpServlet {
     private Distance distance;
     private DistanceDao distanceDao;
 
@@ -38,6 +38,6 @@ public class generatorServlet extends HttpServlet {
         }
 
         req.setAttribute("distances", distances);
-        getServletContext().getRequestDispatcher("/generatorProtocol/generator.jsp").forward(req, resp);
+        req.getRequestDispatcher("/generatorProtocol/generator.jsp").forward(req, resp);
     }
 }

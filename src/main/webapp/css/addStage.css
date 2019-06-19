@@ -1,34 +1,65 @@
+#form{
+	
+}
+
+#info{
+	margin-left: 200px;
+}
+
+.param{
+	text-align: left;
+	display: none;
+}
+
+p input {
+	float: right;
+	width: 35px;
+}
+
 table {
-margin-top: 10px;
-margin-bottom: 10px;
+margin: 10px;
 border-spacing: 0 0px;
 font-family: 'Open Sans', sans-serif;
-margin-left: 7px;
+margin-left: 200px;
+}
+
+th, td{
+	border: solid black 1px;
+}
+
+.border1 {
+	border-radius: 7px 0 0 0;
+}
+
+.border2{
+	border-radius: 0 7px 0 0;	
 }
 
 th {
 font-weight: bold;
-padding: 10px 20px;
-background: #56433D;
-color: #F9C941;
-border: 1px solid black; 
-font-size: 0.9em;
+padding: 10px;
+background: #cccccc;
+font-size: 16px;
 }
 
 td {
 vertical-align: middle;
+text-align: center;
 font-size: 14px;
-/*text-align: center;*/
-border: 1px solid black;
+}
 
+.number{
+	width: 53px;
+	text-align: center;
+}
+
+.time{
+	width: 135px;
 }
 
 #save{
-	margin-left: 170px;
+	margin-left: 500px;
 }
 
-.hidden{
-
-}
 
 

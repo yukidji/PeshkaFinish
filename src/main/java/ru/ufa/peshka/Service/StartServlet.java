@@ -58,7 +58,7 @@ public class StartServlet extends HttpServlet {
 
         //req.setAttribute("timeHour", time);
         //req.setAttribute("timeMinute", timeMinute);
-        getServletContext().getRequestDispatcher("/generatorProtocol/startProtocol.jsp").forward(req, resp);
+        req.getRequestDispatcher("/generatorProtocol/startProtocol.jsp").forward(req, resp);
     }
 }
 

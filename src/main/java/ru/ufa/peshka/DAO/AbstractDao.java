@@ -60,9 +60,12 @@ public abstract class AbstractDao<T> implements GenericDao <T>{
             if (param == CRUD.SELECT){
                 preparedStatement.setString(1, id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    resultSet.next();
-                    mappingSelect(t, resultSet);
-                    logger.info("SELECT FROM DB: " + t.toString());
+                    if (!resultSet.next()) logger.error("this record is not in the database");
+                    else {
+                        /*resultSet.next();*/
+                        mappingSelect(t, resultSet);
+                        logger.info("SELECT FROM DB: " + t.toString());
+                    }
                 }
             }
             if (param == CRUD.SELECT_ALL){

@@ -81,7 +81,7 @@ public class FinishServlet extends HttpServlet {
         req.setAttribute("nameSecretary", nameSecretary);
         req.setAttribute("stages", stageListIdDist);
 
-        getServletContext().getRequestDispatcher("/generatorProtocol/finishProtocol.jsp").forward(req, resp);
+        req.getRequestDispatcher("/generatorProtocol/finishProtocol.jsp").forward(req, resp);
 
     }
 }

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,29 +18,26 @@
 </head>
 
 <body>
-
+  <c:set var = "login" scope = "session" value = "${login}"/>
+  <c:set var = "status" scope = "session" value = "${status}"/>
 <%@ include file="/pattern/header.jsp" %>
 
 <div class="mainANDaside">
-
   <div id="content">
-    <ul>
-        <li><a href="pageInfo/infoCompetition.jsp">Посмотреть информацию о соревнованиях</a></li>
+    <ul id="ulIndex">
+        <li><a href="/PeshkaFinish/competition">Посмотреть информацию о соревнованиях</a></li>
         <li><a href="pageAdd/addCompetition.jsp">Добавить информацию о соревнованиях</a></li>
         <li><a href="pageAdd/addDistance.jsp">Добавить информацию о дистанциях</a></li>
-        <li><a href="pageInfo/infoDistance.jsp">Посмотреть информацию о дистанциях</a></li>
+        <li><a href="/PeshkaFinish/stage">Посмотреть информацию о дистанциях</a></li>
         <li><a href="pageAdd/addDelegation.jsp">Добавить делегацию с участниками соревнований</a></li>
-        <li><a href="">Добавить чипы</a></li>
+        <li><a href="/PeshkaFinish/chip">Добавить чипы</a></li>
         <li><a href="/PeshkaFinish/table">Сформировать протоколы</a></li>
         <li><a href="">Сформировать судейские бланки</a></li>
       </ul>
-  </div>
-      
+  </div>   
   <%@ include file="/pattern/aside.jsp"%>
-
 </div>
 
 <%@ include file="/pattern/footer.jsp"%>
-
 </body>
 </html>

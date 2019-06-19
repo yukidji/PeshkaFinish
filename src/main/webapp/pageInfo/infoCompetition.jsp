@@ -30,12 +30,12 @@
             <p><b>Дата окончания соревнований:</b> ${competition.stopDay}</p>
             <p><b>Главный судья:</b> ${competition.nameJudge}</p>
             <p><b>Главный секретарь:</b> ${competition.nameSecretary}</p>
-            <div class= "but">
-              <button type="submit">Загрузить данные</button>  
-            </div>
         </form>
-        <a href="/PeshkaFinish/competition?action=update">Изменить информацию о соревнованиях</a>
-        <a href="/PeshkaFinish/index.jsp">Вернуться на главную</a>
+        <div id="menu">
+            <a href="/PeshkaFinish/competition?action=update"><img src="/PeshkaFinish/img/menu.png" width="20px">Изменить информацию о соревнованиях</a>
+            <a href="/PeshkaFinish/stage"><img src="/PeshkaFinish/img/menu.png" width="20px">Посмотреть информацию о дистанциях</a>
+            <a href="/PeshkaFinish/index.jsp"><img src="/PeshkaFinish/img/menu.png" width="20px">Вернуться на главную</a>
+        </div>
     </div>
     <%@ include file="/pattern/aside.jsp" %>
 </div>
